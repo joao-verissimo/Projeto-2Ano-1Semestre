@@ -1,0 +1,612 @@
+CREATE TABLE tblInstalacaoAgricola (
+    attrIdInstalacaoAgricola INTEGER,
+    attrNome varchar(30) CONSTRAINT nnNome NOT NULL,
+    
+    CONSTRAINT pkIdInstalacaoAgricola PRIMARY KEY (attrIdInstalacaoAgricola)
+);
+
+CREATE TABLE tblParcela (
+    attrIdParcela INTEGER,
+    attrDescricao varchar(30),
+    attrArea INTEGER,
+    
+    CONSTRAINT pkParcela PRIMARY KEY (attrIdParcela)
+);
+
+CREATE TABLE tblSetor (
+    attrIdSetor INTEGER,
+    attrDescricao varchar(30),
+    attrArea INTEGER,
+    
+    CONSTRAINT pkSetor PRIMARY KEY (attrIdSetor)
+);
+
+CREATE TABLE tblCultura (
+    attrIdCultura INTEGER,
+    attrTipo varchar(20),
+    attrNome varchar(20),
+    
+    CONSTRAINT pkCultura PRIMARY KEY (attrIdCultura)
+);
+
+CREATE TABLE tblParcelaInstalacaoAgricola (
+    attrIdInstalacaoAgricola INTEGER,
+    attrIdParcela INTEGER,
+    
+    CONSTRAINT pkParcelaInstalacaoAgricola PRIMARY KEY (attrIdInstalacaoAgricola, attrIdParcela)
+);
+
+CREATE TABLE tblSetorParcela (
+    attrIdSetor INTEGER,
+    attrIdParcela INTEGER,
+    
+    CONSTRAINT pkSetorParcela PRIMARY KEY (attrIdSetor, attrIdParcela)
+);
+
+CREATE TABLE tblCulturaSetor (
+    attrIdCultura INTEGER,
+    attrIdSetor INTEGER,
+    
+    CONSTRAINT pkCulturaSetor PRIMARY KEY (attrIdSetor, attrIdCultura)
+);
+
+CREATE TABLE tblSistemaRega (
+    attrIdSistemaRega INTEGER,
+    attrTipoRega INTEGER,
+    
+    CONSTRAINT pkSistemaRega PRIMARY KEY (attrIdSistemaRega)
+);
+
+CREATE TABLE tblSistemaTubagem (
+    attrIdSistemaTubagem INTEGER,
+    attrDimensaoTotal INTEGER,
+    
+    CONSTRAINT pkSistemaTubagem PRIMARY KEY (attrIdSistemaTubagem)
+);
+
+CREATE TABLE tblIrrigador (
+    attrIdIrrigador INTEGER,
+    attrTipo INTEGER,
+    
+    CONSTRAINT pkIrrigador PRIMARY KEY (attrIdIrrigador)
+);
+
+CREATE TABLE tblBombeador (
+    attrIdBombeador INTEGER,
+    attrPotencia INTEGER,
+    
+    CONSTRAINT pkBombeador PRIMARY KEY (attrIdBombeador)
+);
+
+CREATE TABLE tblControlador (
+    attrIdControlador INTEGER,
+    
+    CONSTRAINT pkControlador PRIMARY KEY (attrIdControlador)
+);
+
+CREATE TABLE tblTanque (
+    attrIdTanque INTEGER,
+    attrCapacidade INTEGER,
+    
+    CONSTRAINT pkTanque PRIMARY KEY (attrIdTanque)
+);
+
+CREATE TABLE tblEletrovalvula (
+    attrIdEletrovalvula INTEGER,
+    attrEstado CHAR(1),
+    
+    CONSTRAINT pkEletrovalvula PRIMARY KEY (attrIdEletrovalvula)
+);
+
+CREATE TABLE tblTubagemSecundaria (
+    attrIdTubagemSecundaria INTEGER,
+    attrDimensao INTEGER,
+    
+    CONSTRAINT pkTubagemSecundaria PRIMARY KEY (attrIdTubagemSecundaria)
+);
+
+CREATE TABLE tblTubagemPrimaria (
+    attrIdTubagemPrimaria INTEGER,
+    attrDimensao INTEGER,
+    
+    CONSTRAINT pkTubagemPrimaria PRIMARY KEY (attrIdTubagemPrimaria)
+);
+
+CREATE TABLE tblSistemaRegaTubagem (
+    attrIdTubagem INTEGER,
+    attrIdSistemaRega INTEGER,
+    
+    CONSTRAINT pkSistemaRegaTubagem PRIMARY KEY (attrIdTubagem, attrIdSistemaRega)
+);
+
+CREATE TABLE tblComposicaoSistemaTubagem (
+    attrIdSistemaTubagem INTEGER,
+    attrIdTubagemPrimaria INTEGER,
+    attrIdTubagemSecundaria INTEGER,
+    
+    CONSTRAINT pkComposicaoSistemaTubagem  PRIMARY KEY (attrIdSistemaTubagem, attrIdTubagemPrimaria, attrIdTubagemSecundaria)
+);
+
+CREATE TABLE tblSistemaRegaIrrigador (
+    attrIdSistemaRega INTEGER,
+    attrIdIrrigador INTEGER,
+    
+    CONSTRAINT pkSistemaRegaIrrigador PRIMARY KEY (attrIdSistemaRega, attrIdIrrigador)
+);
+
+CREATE TABLE tblSistemaRegaBombeador (
+    attrIdSistemaRega INTEGER,
+    attrIdBombeador INTEGER,
+    
+    CONSTRAINT pkSistemaRegaBombeador PRIMARY KEY (attrIdSistemaRega, attrIdBombeador)
+);
+
+CREATE TABLE tblSistemaRegaControlador (
+    attrIdSistemaRega INTEGER,
+    attrIdControlador INTEGER,
+    
+    CONSTRAINT pkSistemaRegaControlador PRIMARY KEY (attrIdSistemaRega, attrIdControlador)
+);
+
+CREATE TABLE tblSistemaRegaTanque (
+    attrIdSistemaRega INTEGER,
+    attrIdTanque INTEGER,
+    
+    CONSTRAINT pkSistemaRegaTanque PRIMARY KEY (attrIdSistemaRega, attrIdTanque)
+);
+
+CREATE TABLE tblControladorEletrovalvula (
+    attrIdControlador INTEGER,
+    attrIdEletrovalvula INTEGER,
+    
+    CONSTRAINT pkControladorEletrovalvula PRIMARY KEY (attrIdControlador, attrIdEletrovalvula)
+);
+
+CREATE TABLE tblTipoIrrigador (
+    attrTipoIrrigador INTEGER,
+    
+    CONSTRAINT pkTipoIrrigador PRIMARY KEY (attrTipoIrrigador)
+);
+
+CREATE TABLE tblTipoRega (
+    attrTipoRega INTEGER,
+    
+    CONSTRAINT pkTipoRega PRIMARY KEY (attrTipoRega)
+);
+
+
+CREATE TABLE tblEstacaoMeteorologica (
+    attrIdEstacaoMeteorologica INTEGER,
+    attrDescricao varchar(30),
+    
+    CONSTRAINT pkEstacaoMeteorologica PRIMARY KEY (attrIdEstacaoMeteorologica)
+);
+
+CREATE TABLE tblSensor (
+    attrIdSensor INTEGER,
+    attrTipoSensor INTEGER,
+    attrValor INTEGER,
+    
+    CONSTRAINT pkSensor PRIMARY KEY (attrIdSensor)
+);
+
+CREATE TABLE tblTipoSensor (
+    attrTipoSensor INTEGER,
+    
+    CONSTRAINT pkTipoSensor PRIMARY KEY (attrTipoSensor)
+);
+
+CREATE TABLE tblEstacaoMetereoInstalacaoAgricola (
+    attrIdInstalacaoAgricola INTEGER,
+    attrIdEstacao INTEGER,
+    
+    CONSTRAINT pkEstacaoMetereoInstalacaoAgricola PRIMARY KEY (attrIdInstalacaoAgricola, attrIdEstacao)
+);
+
+CREATE TABLE tblSensorEstacaoMeteoro (
+    attrIdSensor INTEGER,
+    attrIdEstacao INTEGER,
+    
+    CONSTRAINT pkSensorEstacaoMeteoro PRIMARY KEY (attrIdSensor, attrIdEstacao)
+);
+
+CREATE TABLE tblSensorCultura (
+    attrIdSensor INTEGER,
+    attrIdCultura INTEGER,
+    
+    CONSTRAINT pkSensorCultura PRIMARY KEY (attrIdSensor, attrIdCultura)
+);
+
+CREATE TABLE tblSistemaRegaInstalacaoAgricola (
+    attrIdSistemaRega INTEGER,
+    attrIdInstalacaoAgricola INTEGER,
+    
+    CONSTRAINT pkSistemaRegaInstalacaoAgricola PRIMARY KEY (attrIdSistemaRega, attrIdInstalacaoAgricola)
+);
+
+CREATE TABLE tblEstacaoMeteorologicaInstalacaoAgricola (
+    attrIdEstacaoMeteorologica INTEGER,
+    attrIdInstalacaoAgricola INTEGER,
+    
+    CONSTRAINT pkEstacaoMeteorologicaInstalacaoAgricola PRIMARY KEY (attrIdEstacaoMeteorologica, attrIdInstalacaoAgricola)
+);
+
+CREATE TABLE tblEdificio (
+    attrIdEdificio INTEGER,
+    attrDimensao INTEGER,
+    attrLocalizacao varchar(20),
+    
+    CONSTRAINT pkEdificio PRIMARY KEY (attrIdEdificio)
+);
+
+CREATE TABLE tblEdificioInstalacaoAgricola (
+    attrIdEdificio INTEGER,
+    attrIdInstalacaoAgricola INTEGER,
+    
+    CONSTRAINT pkEdificioInstalacaoAgricola PRIMARY KEY (attrIdEdificio, attrIdInstalacaoAgricola)
+);
+
+CREATE TABLE tblEstabulo (
+    attrIdEstabulo INTEGER,
+    
+    CONSTRAINT pkEstabulo PRIMARY KEY (attrIdEstabulo)
+);
+
+CREATE TABLE tblArmazem (
+    attrIdArmazem INTEGER,
+    
+    CONSTRAINT pkArmazem PRIMARY KEY (attrIdArmazem)
+);
+
+CREATE TABLE tblGaragem (
+    attrIdGaragem INTEGER,
+    
+    CONSTRAINT pkGaragem PRIMARY KEY (attrIdGaragem)
+);
+
+CREATE TABLE tblAnimal(
+    attrIdAnimal INTEGER,
+    attrNome varchar(20),
+    attrContagem INTEGER,
+    
+    CONSTRAINT pkAnimal PRIMARY KEY (attrIdAnimal)
+);
+
+CREATE TABLE tblRacao(
+    attrIdRacao INTEGER,
+    attrNomeComercial varchar(20),
+    attrFormulacao INTEGER,
+    
+    CONSTRAINT pkRacao PRIMARY KEY (attrIdRacao)
+);
+
+CREATE TABLE tblColheita(
+    attrIdColheita INTEGER,
+    attrDataColheita DATE,
+    
+    CONSTRAINT pkColheita PRIMARY KEY (attrIdColheita)
+);
+
+CREATE TABLE tblProdutoBiologico(
+    attrIdProdutoBiologico INTEGER,
+    attrNome varchar(20),
+    attrTotal INTEGER,
+    
+    CONSTRAINT pkProdutoBiologico PRIMARY KEY (attrIdProdutoBiologico)
+);
+
+CREATE TABLE tblFatorProducao(
+    attrIdFatorProducao INTEGER,
+    attrTipoFator varchar(20),
+    attrNomeComercial varchar(20),
+    attrFormulacao varchar(20),
+    
+    CONSTRAINT pkFatorProducao PRIMARY KEY (attrIdFatorProducao)
+);
+
+CREATE TABLE tblTipoFatorProducao(
+    attrTipoFatorProducao varchar(20),
+    
+    CONSTRAINT pkTipoFatorProducao PRIMARY KEY (attrTipoFatorProducao)
+);
+
+CREATE TABLE tblAnimalEstabulo(
+    attrIdEstabulo INTEGER,
+    attrIdAnimal INTEGER,
+    attrTotal INTEGER,
+    
+    CONSTRAINT pkAnimalEstabulo PRIMARY KEY (attrIdEstabulo, attrIdAnimal)
+);
+
+CREATE TABLE tblArmazenarRacao(
+    attrIdArmazem INTEGER,
+    attrIdRacao INTEGER,
+    
+    CONSTRAINT pkArmazenarRacao PRIMARY KEY (attrIdArmazem, attrIdRacao)
+);
+
+CREATE TABLE tblArmazenarColheita(
+    attrIdArmazem INTEGER,
+    attrIdColheita INTEGER,
+    
+    CONSTRAINT pkArmazenarColheita PRIMARY KEY (attrIdArmazem, attrIdColheita)
+);
+
+CREATE TABLE tblArmazenarFatorProducao(
+    attrIdArmazem INTEGER,
+    attrIdFatorProducao INTEGER,
+    
+    CONSTRAINT pkArmazenarFatorProducao PRIMARY KEY (attrIdArmazem, attrIdFatorProducao)
+);
+
+CREATE TABLE tblArmazenarVeiculo(
+    attrIdGaragem INTEGER,
+    attrIdVeiculo INTEGER,
+    
+    CONSTRAINT pkArmazenarVeiculo PRIMARY KEY (attrIdGaragem, attrIdVeiculo)
+);
+
+CREATE TABLE tblVeiculo(
+    attrIdVeiculo INTEGER,
+    attrDescricao varchar(30),
+    
+    CONSTRAINT pkVeiculo PRIMARY KEY (attrIdVeiculo)
+);
+
+CREATE TABLE tblProdutoAnimal(
+    attrIdProduto INTEGER,
+    attrIdAnimal INTEGER,
+    
+    CONSTRAINT pkProdutoAnimal PRIMARY KEY (attrIdProduto, attrIdAnimal)
+);
+
+CREATE TABLE tblAlimentacaoAnimal(
+    attrIdProduto INTEGER,
+    attrIdAnimal INTEGER,
+    attrIdRacao INTEGER,
+    
+    CONSTRAINT pkAlimentacaoAnimal PRIMARY KEY (attrIdProduto, attrIdAnimal, attrIdRacao)
+);
+
+CREATE TABLE tblProdutoColheita(
+    attrIdProduto INTEGER,
+    attrIdColheita INTEGER,
+    
+    CONSTRAINT pkProdutoColheita PRIMARY KEY (attrIdProduto, attrIdColheita)
+);
+
+CREATE TABLE tblCabaz(
+    attrIdCabaz INTEGER,
+    attrIdProduto INTEGER,
+    attrDataProducao DATE,
+    
+    CONSTRAINT pkCabaz PRIMARY KEY (attrIdCabaz)
+);
+
+CREATE TABLE tblEncomenda(
+    attrIdEncomenda INTEGER,
+    attrPeso INTEGER,
+    attrPreço FLOAT,
+    attrDataEncomenda DATE,
+    
+    CONSTRAINT pkEncomenda PRIMARY KEY (attrIdEncomenda)
+);
+
+CREATE TABLE tblUtilizador(
+    attrIdUtilizador INTEGER,
+    
+    CONSTRAINT pkUtilizador PRIMARY KEY (attrIdUtilizador)
+);
+
+CREATE TABLE tblGestorAgricola(
+    attrIdGestor INTEGER,
+    attrNome varchar(20),
+    attrNumeroFiscal INTEGER,
+    attrEmail varchar(26),
+    attrMorada varchar(26),
+    
+    CONSTRAINT pkGestorAgricola PRIMARY KEY (attrIdGestor)
+);
+
+CREATE TABLE tblGestorDistribuicao(
+    attrIdGestor INTEGER,
+    attrNome varchar(20),
+    attrNumeroFiscal INTEGER,
+    attrEmail varchar(26),
+    attrMorada varchar(26),
+    
+    CONSTRAINT pkGestorDistribuicao PRIMARY KEY (attrIdGestor)
+);
+
+CREATE TABLE tblCondutor(
+    attrIdCondutor INTEGER,
+    attrNome varchar(20),
+    attrNumeroFiscal INTEGER,
+    attrEmail varchar(26),
+    attrMorada varchar(26),
+    
+    CONSTRAINT pkCondutor PRIMARY KEY (attrIdCondutor)
+);
+
+CREATE TABLE tblHub(
+    attrIdHub INTEGER,
+    attrNome varchar(20),
+    
+    CONSTRAINT pkHub PRIMARY KEY (attrIdHub)
+);
+
+CREATE TABLE tblCliente(
+    attrIdCliente INTEGER,
+    attrNome varchar(20),
+    attrNumeroFiscal INTEGER,
+    attrEmail varchar(26),
+    attrMoradaCorrespondencia varchar(26),
+    attrMoradaEntrega varchar(26),
+    attrPlafond FLOAT,
+    attrNivel CHAR(1),
+    attrNumeroIncidentes INTEGER,
+    attrDataUltimoIncidente DATE,
+    attrNumeroEncomendasUltimoAno INTEGER,
+    attrValorTotalUltimoAno FLOAT,
+    
+    CONSTRAINT pkCliente PRIMARY KEY (attrIdCliente)
+);
+
+CREATE TABLE tblProducaoInstalacao(
+    attrIdInstalacaoAgricola INTEGER,
+    attrIdCabaz INTEGER,
+    
+    CONSTRAINT pkProducaoInstalacao PRIMARY KEY (attrIdInstalacaoAgricola, attrIdCabaz)
+);
+
+CREATE TABLE tblProdutoCabaz(
+    attrIdProduto INTEGER,
+    attrIdCabaz INTEGER,
+    
+    CONSTRAINT pkProdutoCabaz PRIMARY KEY (attrIdProduto, attrIdCabaz)
+);
+
+CREATE TABLE tblCabazEncomenda(
+    attrIdEncomenda INTEGER,
+    attrIdCabaz INTEGER,
+    
+    CONSTRAINT pkCabazEncomenda PRIMARY KEY (attrIdEncomenda, attrIdCabaz)
+);
+
+CREATE TABLE tblEncomendaCliente(
+    attrIdEncomenda INTEGER,
+    attrIdCliente INTEGER,
+    
+    CONSTRAINT pkEncomendaCliente PRIMARY KEY (attrIdEncomenda, attrIdCliente)
+);
+
+CREATE TABLE tblOperacaoAgricola(
+    attrIdOperacao INTEGER,
+    attrDataInicio DATE,
+    attrDataFim Date,
+    attrDescricao varchar(30),
+    
+    CONSTRAINT pkOperacaoAgricola PRIMARY KEY (attrIdOperacao)
+);
+
+CREATE TABLE tblOperacaoRega(
+    attrIdOperacao INTEGER,
+    attrIdSistemaRega INTEGER,
+    attrIdGestor INTEGER,
+    attrIdSetor INTEGER,
+    
+    CONSTRAINT pkOperacaoRega PRIMARY KEY (attrIdOperacao, attrIdSistemaRega, attrIdGestor, attrIdSetor)
+);
+
+CREATE TABLE tblOperacaoMeteorologia(
+    attrIdOperacao INTEGER,
+    attrIdEstacaoMeteorologica INTEGER,
+    attrIdGestor INTEGER,
+    attrIdSetor INTEGER,
+    
+    CONSTRAINT pkOperacaoMeteorologica PRIMARY KEY (attrIdOperacao, attrIdEstacaoMeteorologica, attrIdGestor, attrIdSetor)
+);
+
+CREATE TABLE tblOperacaoFertilizacao(
+    attrIdOperacao INTEGER,
+    attrIdFatorProducao INTEGER,
+    attrIdGestor INTEGER,
+    attrIdSetor INTEGER,
+    
+    CONSTRAINT pkOperacaoFertilizacao PRIMARY KEY (attrIdOperacao, attrIdFatorProducao, attrIdGestor, attrIdSetor)
+);
+
+CREATE TABLE tblGestorOperacaoAgricola(
+    attrIdOperacao INTEGER,
+    attrIdInstalacao INTEGER,
+    attrIdGestor INTEGER,
+    
+    CONSTRAINT pkGestorOperacaoAgricola PRIMARY KEY (attrIdOperacao, attrIdInstalacao, attrIdGestor)
+);
+
+CREATE TABLE tblOperacaoDistribuicao(
+    attrIdOperacao INTEGER,
+    attrDataInicio DATE,
+    attrDataFim Date,
+    attrDescricao varchar(30),
+    
+    CONSTRAINT pkOperacaoDistribuicao PRIMARY KEY (attrIdOperacao)
+);
+
+CREATE TABLE tblGestorOperacaoDistribuicao(
+    attrIdOperacao INTEGER,
+    attrIdGestorDistribuicao INTEGER,
+    attrIdHub INTEGER,
+    
+    CONSTRAINT pkGestorOperacaoDistribuicao PRIMARY KEY (attrIdOperacao, attrIdGestorDistribuicao, attrIdHub)
+);
+
+CREATE TABLE tblAtor(
+    attrIdUtilizador INTEGER,
+    attrIdAtor INTEGER,
+    
+    CONSTRAINT pkAtor PRIMARY KEY (attrIdUtilizador, attrIdAtor)
+);
+
+CREATE TABLE tblRecolherEncomenda(
+    attrIdOperacao INTEGER,
+    attrIdCondutor INTEGER,
+    attrIdEncomenda INTEGER,
+    attrIdHub INTEGER,
+    
+    CONSTRAINT pkRecolherEncomenda PRIMARY KEY (attrIdOperacao, attrIdCondutor, attrIdEncomenda, attrIdHub)
+);
+
+CREATE TABLE tblDistribuirEncomenda(
+    attrIdOperacao INTEGER,
+    attrIdCondutor INTEGER,
+    attrIdEncomenda INTEGER,
+    attrIdHub INTEGER,
+    attrIdCliente INTEGER,
+    
+    CONSTRAINT pkDistribuirEncomenda PRIMARY KEY (attrIdOperacao, attrIdCondutor, attrIdEncomenda, attrIdHub, attrIdCliente)
+);
+
+CREATE TABLE tblNivelCliente(
+    attrIdNivel CHAR(1),
+    
+    CONSTRAINT pkNivelCliente PRIMARY KEY (attrIdNivel)
+);
+
+CREATE TABLE tblCadernoCampo(
+    attrIdCaderno INTEGER,
+    attrDataCriacao DATE,
+    attrDataConclusao DATE,
+    
+    CONSTRAINT pkCadernoCampo PRIMARY KEY (attrIdCaderno)
+);
+
+CREATE TABLE tblRegistoCadernoCampo(
+    attrIdCaderno INTEGER,
+    attrIdOperacao INTEGER,
+    
+    CONSTRAINT pkRegistoCadernoCampo PRIMARY KEY (attrIdCaderno, attrIdOperacao)
+);
+
+CREATE TABLE tblEquipamento(
+    attrIdEquipamento INTEGER,
+    
+    CONSTRAINT pkEquipamento PRIMARY KEY (attrIdEquipamento)
+);
+
+CREATE TABLE tblArmazenarEquipamento(
+    attrIdEquipamento INTEGER,
+    attrIdGaragem INTEGER,
+    
+    CONSTRAINT pkArmazenarEquipamento PRIMARY KEY (attrIdEquipamento, attrIdGaragem)
+);
+
+CREATE TABLE tblOperacaoColheita(
+    attrIdOperacao INTEGER,
+    attrIdColheita INTEGER,
+    attrIdGestor INTEGER,
+    attrIdSetor INTEGER,
+    attrIdCultura INTEGER,
+    
+    CONSTRAINT pkOperacaoColheita PRIMARY KEY (attrIdOperacao, attrIdColheita, attrIdGestor, attrIdSetor, attrIdCultura)
+);

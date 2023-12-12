@@ -1,0 +1,76 @@
+CREATE TABLE tblSetor (
+    attrIdSetor INTEGER,
+    attrDescricao varchar(30),
+    attrArea INTEGER,
+    
+    CONSTRAINT pkSetor PRIMARY KEY (attrIdSetor)
+);
+
+CREATE SEQUENCE AuditIDSeq START WITH 1;
+CREATE TABLE tblAuditTrail ( 
+attrId INTEGER DEFAULT AuditIDSeq.nextval NOT NULL,
+attrUserLogin varchar(20) NOT NULL,
+attrDateTime date NOT NULL,
+attrType varchar(20) NOT NULL,
+attrOldDesc varchar(255),
+attrOldArea INTEGER,
+attrNewDesc varchar(255),
+attrNewArea INTEGER,
+CONSTRAINT pkAuditTrail PRIMARY KEY (attrId) );
+
+CREATE OR REPLACE TRIGGER tr_tblAuditTrail_Insert
+AFTER INSERT ON tblSetor
+FOR EACH ROW
+BEGIN
+    INSERT INTO tblAuditTrail (attrUserLogin, attrDateTime, attrType,attrOldDesc,attrOldArea,attrNewDesc,attrNewArea)
+    VALUES (USER, SYSDATE,'INSERT',:OLD.attrDescricao,:OLD.attrArea,:NEW.attrDescricao,:NEW.attrArea);
+END;
+
+CREATE OR REPLACE TRIGGER tr_tblAuditTrail_UPDATE
+AFTER UPDATE ON tblSetor
+FOR EACH ROW
+BEGIN
+    INSERT INTO tblAuditTrail (attrUserLogin, attrDateTime, attrType,attrOldDesc,attrOldArea,attrNewDesc,attrNewArea)
+    VALUES (USER, SYSDATE,'UPDATE',:OLD.attrDescricao,:OLD.attrArea,:NEW.attrDescricao,:NEW.attrArea);
+END;
+
+CREATE OR REPLACE TRIGGER tr_tblAuditTrail_Delete
+AFTER DELETE ON tblSetor
+FOR EACH ROW
+BEGIN
+    INSERT INTO tblAuditTrail (attrUserLogin, attrDateTime, attrType,attrOldDesc,attrOldArea,attrNewDesc,attrNewArea)
+    VALUES (USER, SYSDATE,'DELETE',:OLD.attrDescricao,:OLD.attrArea,:NEW.attrDescricao,:NEW.attrArea);
+END;
+
+
+INSERT INTO tblSetor (attrIdSetor, attrDescricao, attrArea)
+VALUES (1, 'Marketing', 100);
+
+select * from tblAuditTrail;
+select* from tblSetor;
+
+UPDATE tblSetor
+SET attrDescricao = 'Finance', attrArea = 200
+WHERE attrIdSetor = 1;
+select * from tblAuditTrail;
+select* from tblSetor;
+
+DELETE FROM tblSetor
+WHERE attrIdSetor = 1;
+select * from tblAuditTrail;
+select* from tblSetor;
+
+
+CREATE OR REPLACE TRIGGER tr_tblAuditTrail_DML
+AFTER INSERT OR UPDATE OR DELETE ON tblSetor
+FOR EACH ROW
+BEGIN
+    INSERT INTO tblAuditTrail (attrUserLogin, attrDateTime, attrType,attrOldDesc,attrOldArea,attrNewDesc,attrNewArea)
+    VALUES (USER, SYSDATE,
+            CASE
+                WHEN INSERTING THEN 'INSERT'
+                WHEN UPDATING THEN 'UPDATE'
+                WHEN DELETING THEN 'DELETE'
+            END,
+            :OLD.attrDescricao,:OLD.attrArea,:NEW.attrDescricao,:NEW.attrArea);
+END;

@@ -1,0 +1,28 @@
+CREATE OR REPLACE PROCEDURE INSERT_CULTURA_IN_SETOR(
+    P_ID_CULTURA tblCultura.attrIdCultura%TYPE,
+    P_TIPO tblCultura.attrTipo%TYPE,
+    P_NOME tblCultura.attrNome%TYPE,
+)
+IS
+BEGIN
+    INSERT INTO Cultura (
+        attrIdCultura,
+        attrTipo, 
+        attrNome
+        )
+    VALUES (
+        P_ID_CULTURA,
+        P_TIPO, 
+        P_NOME
+        );
+
+END;
+
+
+--TEST--
+
+BEGIN
+    INSERT_CULTURA_IN_SETOR (P_ID_CULTURA, P_TIPO, P_NOME);
+END;
+
+SELECT * FROM Cultura

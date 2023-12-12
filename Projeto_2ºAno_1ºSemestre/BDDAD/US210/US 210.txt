@@ -1,0 +1,65 @@
+CREATE TABLE tblOperacaoAgricola (
+  attrIdOperacao INTEGER,
+  attrTipo varchar2(30) CONSTRAINT nnTipo NOT NULL,
+  attrFormaAplicacao varchar2(20) CONSTRAINT nnFormaAplicacao NOT NULL,
+  attrProdutos varchar2(100) CONSTRAINT nnProdutos NOT NULL,
+  attrQuantidades varchar2(100) CONSTRAINT nnQuantidades NOT NULL,
+  attrData date CONSTRAINT nnData NOT NULL,
+  attrSetor INTEGER CONSTRAINT nnSetor NOT NULL,
+
+  CONSTRAINT pkIdOperacao PRIMARY KEY (attrIdOperacao)
+);
+
+CREATE TABLE tblRestricaoFatorProducao (
+  attrIdRestricao INTEGER,
+  attrSetor INTEGER,
+  attrDataInicio date,
+  attrDataFim date,
+  attrFatorProducao varchar2(30),
+
+  CONSTRAINT pkIdRestricao PRIMARY KEY (attrIdRestricao)
+);
+
+CREATE PROCEDURE spInsertOperacaoAgricola (
+  pTipo varchar2(30),
+  pFormaAplicacao varchar2(20),
+  pProdutos varchar2(100),
+  pQuantidades varchar2(100),
+  pData date,
+  pSetor INTEGER
+)
+AS
+  vCount INTEGER;
+BEGIN
+  SELECT COUNT(*) INTO vCount
+  FROM tblRestricaoFatorProducao
+  WHERE attrSetor = pSetor AND attrDataInicio <= pData AND attrDataFim >= pData;
+
+  IF vCount = 0 THEN
+    INSERT INTO tblOperacaoAgricola (attrTipo, attrFormaAplicacao, attrProdutos, attrQuantidades, attrData, attrSetor)
+    VALUES (pTipo, pFormaAplicacao, pProdutos, pQuantidades, pData, pSetor);
+  END IF;
+END;
+
+CREATE PROCEDURE spListOperacoesAgricolas (
+  pDataInicio date,
+  pDataFim date
+)
+AS
+BEGIN
+  SELECT attrSetor, attrData, attrTipo
+  FROM tblOperacaoAgricola
+  WHERE attrData >= pDataInicio AND attrData <= pDataFim
+  ORDER BY attrSetor, attrData;
+END;
+
+CREATE PROCEDURE spListRestricoesSetor (
+  pSetor INTEGER,
+  pData date
+)
+AS
+BEGIN
+  SELECT *
+  FROM tblRestricaoFatorProducao
+  WHERE attrSetor = pSetor AND attrDataInicio <= pData AND attrDataFim >= pData;
+END;

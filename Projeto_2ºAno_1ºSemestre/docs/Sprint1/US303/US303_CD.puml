@@ -1,0 +1,57 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class DistributionNetwork {
+- MapGraph<User, Integer> graph
++ importUserCSV(String path)
++ importDistanceCSV(String path)
++ addUser(String locID, String userID, double lat, double lng)
++ addPath(String locID1, String locID2, Integer weight)
++ setHUBs(int n)
++ clearHUBs()
+}
+
+class SetHUBsUI{
+}
+
+class SetHUBsController {
++ setHUBs(int n)
++ clearHUBs()
+}
+
+
+class Company {
+}
+
+class User {
+- String locID
+- String userID
+- double lat
+- double lng
+
++ getLocID()
++ getUserID()
++ getLat()
++ getLng()
++ equals(Object o)
++ hashCode()
++ toString()
+}
+
+class Firm {
+- boolean isHUB
++ isHUB()
++ setHUB(boolean HUB)
+}
+
+
+class MapGraph {
+}
+
+DistributionNetwork --> User
+Company --> DistributionNetwork
+User <|-- Firm
+DistributionNetwork ..> MapGraph
+SetHUBsController --> Company
+SetHUBsUI --> SetHUBsController
+@enduml

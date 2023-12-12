@@ -1,0 +1,10 @@
+@startuml
+
+class closestHubToClient {
++ getclosesthubtoclients(Graph<V, E> g, Comparator<E> ce, BinaryOperator<E> sum, E zero)
++ getclosesthubtoclient(Graph<V, E> g, V client, Comparator<E> ce, BinaryOperator<E> sum, E zero)
++ DepthFirstSearchForHubs(Graph<V, E> g, V vert)
+- DepthFirstSearchForHubs(Graph<V, E> g, V vOrig, boolean[] visited, LinkedList<V> qdfs)
+
+}
+@endumll

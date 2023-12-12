@@ -1,0 +1,5 @@
+select tbColheita.attrIdSetor as "ID", tbColheita.attrDescricao as "Nome", cast(sum (c.Quantidade)/a.Area AS DECIMAL(38, 2)) as "Produção por Hectare"
+from tblSetor a, tblCultura b, tblColheita c
+where a.attrIdSetor = b.attrIdCultura and b.attrIdCultura = c.attrIdColheita
+group by a.attrIdSetor, a.attrDescricao, a.attrArea
+order by "Produção por Hectare" desc;

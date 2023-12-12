@@ -1,0 +1,25 @@
+	This file contains all the naming conventions for all of the database objects that
+are to be created throughout the project.
+
+- Names can contain only alphanumeric characters.
+- Must begin with a lower case prefix according to the corresponding type of object.
+- Multi-word names must follow an Upper Camel Case style, where the first letter of each word
+is capitalized and there's no spaces in between words.
+- A name must not have reserved keywords in it.
+
+Examples:
+
+Tables 		->	tbl[TableName]
+Attributes 		->	atr[AttributeName]
+Restrictions 	->	res[RestrictionName]
+Primary Keys	->	pk[PrimaryKeyName]
+Foreign Keys	->	fk[ForeignKeyName]
+Packages		->	pkg[PackageName]
+Variables		->	var[VariableName]
+Cursors		->	cur[CursorName]
+Procedures		->	prc[ProcedureName]
+Functions		->	fnc[FunctionName]
+Exceptions		->	exc[ExceptionName]
+Triggers		->	trg[TriggerName]
+
+

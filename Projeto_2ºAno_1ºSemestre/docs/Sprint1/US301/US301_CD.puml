@@ -1,0 +1,93 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class DistributionNetwork {
+- MapGraph<User, Integer> graph
++ getGraph(): MapGraph
++ importUserCSV(String path): void
++ importDistanceCSV(String path): void
++ createUser(String locID, String userID, double lat, double lng): User
++ addUser(String locID, String userID, double lat, double lng): void
++ addPath(String locID1, String locID2, Integer weight): void
++ setHUBs(int n): TreeMap<Double, Firm>
++ clearHUBs(): void
++ findNearestNeighboursByType(int limit, ArrayList<LinkedList<User>> paths, ArrayList<Integer> dists, Class<?> clazz): TreeSet<DistancePathPair>
++ findNearestHUB(ArrayList<LinkedList<User>> paths, ArrayList<Integer> dists): Firm
+}
+
+class DistancePathPair{
+- Integer distance
+- LinkedList<User> path
++ DistancePathPair(Integer distance, LinkedList<User> path)
++ getDistance(): Integer
++ getPath(): LinkedList<User>
+}
+
+class AddUserUI {
+}
+
+class AddConnectionUI {
+}
+
+class AddUserController {
++ importUserCSV(String path): void
++ addUser(String locId, String userId, double lat, double lng): void
+}
+
+class AddConnectionController {
++ importDistanceCSV(String path): void
++ addPath(String locID1, String locID2, Integer weight): void
+}
+
+class Company {
+- DistributionNetwork distributionNetwork
+- DispatchList dispatchList
+- CabazStore cabazStore
++ getInstance(): Company
++ getDistributionNetwork(): DistributionNetwork
++ getDispatchList(): DispatchList
++ getCabazStore(): CabazStore
+}
+
+class User {
+- String locID
+- String userID
+- double lat
+- double lng
+
++ getLocID(): String
++ getUserID(): String
++ getLat(): double
++ getLng(): double
++ equals(Object o): boolean
++ hashCode(): int
++ toString(): string
+}
+
+class Client {
+}
+
+class Firm {
+- boolean isHUB
++ isHUB(): boolean
++ setHUB(boolean HUB)
+}
+
+class Producer {
+}
+
+class MapGraph {
+}
+
+DistributionNetwork --> User
+Company --> DistributionNetwork
+AddConnectionController --> Company
+AddUserController --> Company
+AddUserUI --> AddUserController
+AddConnectionUI --> AddConnectionController
+User <|-- Firm
+User <|-- Client
+User <|-- Producer
+DistributionNetwork ..> MapGraph
+DistributionNetwork *-- DistancePathPair
+@enduml

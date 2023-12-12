@@ -1,0 +1,27 @@
+-- PROCEDURE ENCOMENDAS DE CLIENTE EM DETERMINADA DATA --
+CREATE OR REPLACE PROCEDURE ENCOMENDAS_DE_CLIENTE (
+    P_ID_CLIENTE tblEncomenda.attrIdEncomenda%TYPE,
+    P_DATA_ENCOMENDA tblEncomenda.attrDataEncomenda%TYPE)
+IS
+    V_ID_ENCOMENDA tblEncomenda.attrIdEncomenda%TYPE;
+    V_DATA_ENCOMENDA tblEncomenda.attrDataEncomenda%TYPE;
+    V_PRECO tblEncomenda.attrPreço%TYPE;
+BEGIN
+   FOR C IN (
+        SELECT attrIdEncomenda, attrDataEncomenda, attrPreço
+        INTO V_ID_ENCOMENDA, V_DATA_ENCOMENDA, V_PRECO
+        FROM tblEncomenda 
+        WHERE tblEncomenda.attrIdEncomenda = P_ID_CLIENTE 
+        AND tblEncomenda.attrDataEncomenda = P_DATA_ENCOMENDA
+    )
+    LOOP
+        V_ID_ENCOMENDA := C.attrIdEncomenda;
+        V_DATA_ENCOMENDA := C.attrDataEncomenda;
+        V_PRECO := C.attrPreço;
+
+    END LOOP;
+END; 
+
+BEGIN
+    ENCOMENDAS_DE_CLIENTE(3, TO_DATE('28-08-2022', 'DD-MM-YYYY'));
+END;

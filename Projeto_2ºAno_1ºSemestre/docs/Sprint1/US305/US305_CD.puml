@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class Algorithms {
++ kruskal(Graph<V, E> g)
+- DepthFirstSearch(Graph<V, E> g, V vOrig,boolean[] visited, LinkedList<V> qdfs)
+}
+
+class Graph {
++ numVertices()
++ key()
++ vertices()
++ isDirected()
+}
+
+class Edge{
++ getVOrig()
++ getVDest()
++ getWeight()
++ equals()
+}
+class MapGraph{
+}
+class MatrixGraph{
+}
+Algorithms --> MapGraph
+Algorithms --> MatrixGraph
+Algorithms--> Graph
+Graph-->Edge
+
+@enduml

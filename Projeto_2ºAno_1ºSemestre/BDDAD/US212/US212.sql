@@ -1,0 +1,238 @@
+CREATE SEQUENCE SENSORREDIDSEQ START WITH 1;
+
+CREATE TABLE TBLSENSORREADING (
+    ATTRID INTEGER PRIMARY KEY,
+    ATTRSENSORID VARCHAR(5) NOT NULL,
+    ATTRSENSORTYPE VARCHAR(2) NOT NULL,
+    ATTRVALUE INTEGER NOT NULL,
+    ATTRREFERENCEVALUE INTEGER NOT NULL,
+    ATTRTIMEOFREADING DATE NOT NULL
+);
+
+ALTER TABLE TBLSENSORREADING MODIFY (ATTRID DEFAULT SENSORREDIDSEQ.NEXTVAL NOT NULL);
+
+CREATE TABLE TBLSENSORTYPE (
+    ATTRTYPECODE VARCHAR(2) PRIMARY KEY,
+    ATTRTYPENAME VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE TBLSENSORTYPE (
+    ATTRTYPECODE VARCHAR(2) PRIMARY KEY,
+    ATTRTYPENAME VARCHAR(31) NOT NULL
+);
+
+INSERT INTO TBLSENSORTYPE (
+    ATTRTYPECODE,
+    ATTRTYPENAME
+) VALUES (
+    'HS',
+    'Soil Moisture Sensor'
+);
+
+INSERT INTO TBLSENSORTYPE (
+    ATTRTYPECODE,
+    ATTRTYPENAME
+) VALUES (
+    'Pl',
+    'Rainfall sensor'
+);
+
+INSERT INTO TBLSENSORTYPE (
+    ATTRTYPECODE,
+    ATTRTYPENAME
+) VALUES (
+    'TS',
+    'Soil temperature sensor'
+);
+
+INSERT INTO TBLSENSORTYPE (
+    ATTRTYPECODE,
+    ATTRTYPENAME
+) VALUES (
+    'VV',
+    'Wind speed sensor'
+);
+
+INSERT INTO TBLSENSORTYPE (
+    ATTRTYPECODE,
+    ATTRTYPENAME
+) VALUES (
+    'TA',
+    'Atmospheric temperature sensor'
+);
+
+INSERT INTO TBLSENSORTYPE (
+    ATTRTYPECODE,
+    ATTRTYPENAME
+) VALUES (
+    'HA',
+    'Air humidity sensor'
+);
+
+INSERT INTO TBLSENSORTYPE (
+    ATTRTYPECODE,
+    ATTRTYPENAME
+) VALUES (
+    'PA',
+    'Atmospheric pressure sensor'
+);
+
+CREATE TABLE TBLREADPROCESSLOG (
+    ATTRID INTEGER PRIMARY KEY,
+    ATTREXECUTIONTIME DATE NOT NULL,
+    ATTRNUMRECORDSREAD INTEGER NOT NULL,
+    ATTRNUMRECORDSINSERTED INTEGER NOT NULL,
+    ATTRNUMRECORDSERROR INTEGER NOT NULL
+);
+
+ALTER TABLE TBLREADPROCESSLOG MODIFY (ATTRID DEFAULT SENSORREDIDSEQ.NEXTVAL NOT NULL);
+
+CREATE TABLE TBLREADERROR (
+    ATTRID INTEGER PRIMARY KEY,
+    ATTRREADPROCESSLOGID INTEGER NOT NULL,
+    ATTRSENSORID VARCHAR(5) NOT NULL,
+    ATTRNUMERRORS INTEGER NOT NULL,
+    FOREIGN KEY (ATTRREADPROCESSLOGID) REFERENCES TBLREADPROCESSLOG(ATTRID)
+);
+
+ALTER TABLE TBLREADERROR MODIFY (ATTRID DEFAULT SENSORREDIDSEQ.NEXTVAL NOT NULL);
+
+CREATE OR REPLACE PROCEDURE GET_NTH_ELEMENT(
+    P_N IN NUMBER,
+    P_RESULT OUT TBLSENSORREADING%ROWTYPE
+) AS
+BEGIN
+    SELECT
+        * INTO P_RESULT
+    FROM
+        (
+            SELECT
+                *
+            FROM
+                TBLSENSORREADING
+            ORDER BY
+                ATTRID
+        )
+    WHERE
+        ROWNUM = P_N;
+END;
+CREATE OR REPLACE PROCEDURE TRANSFER_SENSOR_READINGS AS
+    V_NUM_RECORDS_READ     NUMBER := 0;
+    V_NUM_RECORDS_INSERTED NUMBER := 0;
+    V_NUM_RECORDS_ERROR    NUMBER := 0;
+    V_ERROR_RECORDS        SYS_REFCURSOR;
+BEGIN
+    FOR RECORD IN (
+        SELECT
+            *
+        FROM
+            INPUT_SENSOR
+    ) LOOP
+        V_NUM_RECORDS_READ := V_NUM_RECORDS_READ + 1;
+ -- Validate record according to specifications
+        V_SENSOR_ID := RECORD.SENSOR_ID;
+        V_SENSOR_TYPE := RECORD.SENSOR_TYPE;
+        V_VALUE := RECORD.VALUE;
+        V_REFERENCE_VALUE := RECORD.REFERENCE_VALUE;
+        V_TIME_OF_READING := RECORD.TIME_OF_READING;
+ -- Check if sensor_id is a 5-character string
+        IF LENGTH(V_SENSOR_ID) != 5 THEN
+            V_NUM_RECORDS_ERROR := V_NUM_RECORDS_ERROR + 1;
+            INSERT INTO TBLREADINGERROR (
+                SENSOR_ID,
+                ERROR_MSG
+            ) VALUES (
+                V_SENSOR_ID,
+                'Invalid sensor_id'
+            );
+            CONTINUE;
+        END IF;
+ -- Check if sensor_type is a 2-character string
+        IF LENGTH(V_SENSOR_TYPE) != 2 THEN
+            V_NUM_RECORDS_ERROR := V_NUM_RECORDS_ERROR + 1;
+            INSERT INTO TBLREADINGERROR (
+                SENSOR_ID,
+                ERROR_MSG
+            ) VALUES (
+                V_SENSOR_ID,
+                'Invalid sensor_type'
+            );
+            CONTINUE;
+        END IF;
+ -- Check if sensor_type is a valid type
+        SELECT
+            COUNT(*) INTO V_COUNT
+        FROM
+            TBLSENSORTYPE
+        WHERE
+            ATTRTYPECODE = V_SENSOR_TYPE;
+        IF V_COUNT = 0 THEN
+            V_NUM_RECORDS_ERROR := V_NUM_RECORDS_ERROR + 1;
+            INSERT INTO TBLREADINGERROR (
+                SENSOR_ID,
+                ERROR_MSG
+            ) VALUES (
+                V_SENSOR_ID,
+                'Invalid sensor_type'
+            );
+            CONTINUE;
+        END IF;
+ -- Check if value is within valid range
+        IF V_VALUE < 0 OR V_VALUE > 100 THEN
+            V_NUM_RECORDS_ERROR := V_NUM_RECORDS_ERROR + 1;
+            INSERT INTO TBLREADINGERROR (
+                SENSOR_ID,
+                ERROR_MSG
+            ) VALUES (
+                V_SENSOR_ID,
+                'Invalid value'
+            );
+            CONTINUE;
+        END IF;
+ -- Check if reference_value is within valid range
+        IF V_REFERENCE_VALUE < 0 OR V_REFERENCE_VALUE > 100 THEN
+            V_NUM_RECORDS_ERROR := V_NUM_RECORDS_ERROR + 1;
+            INSERT INTO TBLREADINGERROR (
+                SENSOR_ID,
+                ERROR_MSG
+            ) VALUES (
+                V_SENSOR_ID,
+                'Invalid reference_value'
+            );
+            CONTINUE;
+        END IF;
+ -- Insert record into TBLSENSORREADING
+        INSERT INTO TBLSENSORREADING (
+            ATTRSENSORID,
+            ATTRSENSORTYPE,
+            ATTRVALUE,
+            ATTRREFERENCEVALUE,
+            ATTRTIMEOFREADING
+        ) VALUES (
+            V_SENSOR_ID,
+            V_SENSOR_TYPE,
+            V_VALUE,
+            V_REFERENCE_VALUE,
+            V_TIME_OF_READING
+        );
+        V_NUM_RECORDS_INSERTED := V_NUM_RECORDS_INSERTED + 1;
+    END LOOP;
+ -- Insert log record into TBLREADINGPROCESSLOG
+    INSERT INTO TBLREADINGPROCESSLOG (
+        ATTREXECUTIONTIME,
+        ATTRNUMRECORDSREAD,
+        ATTRNUMRECORDSINSERTED,
+        ATTRNUMRECORDSERROR
+    ) VALUES (
+        SYSDATE,
+        V_NUM_RECORDS_READ,
+        V_NUM_RECORDS_INSERTED,
+        V_NUM_RECORDS_ERROR
+    );
+ -- Get error records
+    OPEN V_ERROR_RECORDS FOR
+        SELECT
+            *
+        FROM
+            TBLREADINGERROR;
+END;

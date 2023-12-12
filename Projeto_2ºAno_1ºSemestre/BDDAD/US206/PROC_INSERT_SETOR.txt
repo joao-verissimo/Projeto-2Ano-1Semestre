@@ -1,0 +1,25 @@
+CREATE OR REPLACE PROCEDURE INSERT_SETOR(
+    P_ID_SETOR tblSetor.attrIdSetor%TYPE,
+    P_DESCRICAO tblSetor.attrDescricao%TYPE,
+    P_AREA tblSetor.attrArea%TYPE)
+IS
+BEGIN
+    INSERT INTO Setor (
+        attrIdSetor,
+        attrDescricao, 
+        attrArea
+        )
+    VALUES (
+        P_ID_SETOR,
+        P_DESCRICAO,
+        P_AREA
+        );
+END;
+
+--TEST--
+
+BEGIN
+    INSERT_SETOR (7, 'Setor7', 70);
+END;
+
+SELECT * FROM Setor

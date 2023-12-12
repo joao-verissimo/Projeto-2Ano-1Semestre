@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class Algorithms {
++ isGraphConnected (Graph<V,E> g)
++ CountMinPath (Graph<V,E> g, V vOrigin, V vDest,Comparator<E> ce, BinaryOperator<E> sum, E zero)
+- shortestPath (Graph<V,E> g, V vOrigin, V vDest,Comparator<E> ce, BinaryOperator<E> sum, E zero)
+- shortestPathDijkstra (Graph<V,E> g, V vOrigin,Comparator<E> ce, BinaryOperator<E> sum, E zero)
+}
+
+class Graph {
++ numVertices()
++ key()
++ vertices()
+}
+
+class Edge{
++ getVOrig()
++ getVDest()
++ getWeight()
++ equals()
+}
+Algorithms--> Graph
+Graph-->Edge
+
+@enduml

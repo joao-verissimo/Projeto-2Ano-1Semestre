@@ -1,0 +1,96 @@
+@startuml
+ object InstalaçãoAgrícola{
+    Designação
+    Área
+    Contacto
+}
+object Cultura {
+    Especie Vegetal
+    Permanência
+}
+object FatoresDeProdução{
+Nome
+Formulação
+Ficha Técnica
+}
+object SistemaDeRega
+object ParcelaAgricola {
+    Designação
+    Area
+}
+object Edifício
+object Estábulo
+object Garagem
+object Armazém
+object Animal
+object Máquina
+object Colheita
+object Ração
+object ProdutosAgrícola
+object Cabaz
+object CadernoDeCampo {
+Ano
+}
+object EstaçãoMeteorológica {
+Sensor de pluviosidade
+Sensor de temperatura do solo
+Sensor de humidade do solo
+Sensor de velocidade do vento
+Sensor de temperatura, de humidade do ar e pressão atmosférica
+}
+object Plano {
+Plano de Rega
+Plano de Fertilização
+Plano de Correções Minerais
+}
+object Registo {
+Registo de Fertilização
+Registo de Dados dos Sensores
+Registo de Colheita
+Registo de Rega
+}
+object Utilizador
+object GestorAgrícola
+object Cliente
+object Condutor
+object GestorDeDistribuição
+object Empresa
+object Hub
+object Gravidade
+object Bombeada
+
+
+InstalaçãoAgrícola "1" -> "*" ParcelaAgricola :  tem
+ParcelaAgricola "*" --> "1" Cultura : tem
+Cultura "*" --> "1" FatoresDeProdução : usa
+InstalaçãoAgrícola "1" -->"*" Edifício : tem
+Estábulo --|> Edifício
+Garagem --|> Edifício
+Armazém --|> Edifício
+Garagem "1"-->"*" Máquina : guarda
+Estábulo "1"-->"*" Animal : guarda
+Armazém "1"-->"*" Colheita : guarda
+Armazém "1"-->"*" FatoresDeProdução : guarda
+Armazém "1"-->"*" Ração : guarda
+CadernoDeCampo "1" --> "1" Plano : constituido por
+CadernoDeCampo "1" --> "*" Registo : constituido por
+Cliente --|> Utilizador
+Condutor --|> Utilizador
+GestorAgrícola --|> Utilizador
+GestorDeDistribuição --|> Utilizador
+GestorAgrícola "1" --> "*" Cultura :gere
+GestorAgrícola "1" --> "*" CadernoDeCampo : regista
+Cabaz "1" --> "*" ProdutosAgrícola : possui
+Cliente "1" --> "*" Cabaz : encomenda
+Condutor "1" --> "*" Cabaz : recolhe
+Condutor "1" --> "*" Hub : entrega cabaz
+GestorDeDistribuição "1" --> "*" Cabaz : gere recolha e transporte
+Cabaz "*" --> "1" Hub : entregue
+Cliente "*" --> "*" Hub : recolhe
+Cultura "1"--> "1" ProdutosAgrícola : produz
+Empresa "1"-->"0..1" Hub : é
+SistemaDeRega "1"-->"*" Cultura : rega
+Gravidade --|> SistemaDeRega
+Bombeada  --|> SistemaDeRega
+EstaçãoMeteorológica "1"-->"1" SistemaDeRega : controla
+@enduml

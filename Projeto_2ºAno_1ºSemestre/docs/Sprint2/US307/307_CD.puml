@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+class Cabaz {
+    -user: User
+    -day: int
+    -products: float[]
+    +Cabaz(user: User, day: int, products: float[])
+    +getUser(): User
+    +setUser(user: User): void
+    +getDay(): int
+    +setDay(day: int): void
+    +getProducts(): float[]
+    +setProducts(products: float[]): void
+    +toString(): String
+}
+class CabazStore {
+    -cabazC: Map<Integer, Map<Client, Cabaz>>
+    -cabazE: Map<Integer, Map<Firm, Cabaz>>
+    -cabazP: Map<Integer, Map<Producer, Cabaz>>
+    +importCabazFromCSV(filePath: String, graph: MapGraph<User, Integer>): void
+    +getCabazC(): Map<Integer, Map<Client, Cabaz>>
+    +getCabazE(): Map<Integer, Map<Firm, Cabaz>>
+    +getCabazP(): Map<Integer, Map<Producer, Cabaz>>
+    +totalProducts(): float
+}
+class DistributionNetwork {
+- MapGraph<User, Integer> graph 
++ importUserCSV(String path): void
++ importDistanceCSV(String path) : void
++ getGraph(): MapGraph<User, Integer>
+}
+
+class MapGraph {
+}
+DistributionNetwork "1" *-- "1" MapGraph
+CabazStore "1" *-- "*" Cabaz
+DistributionNetwork "1" *-- "*" CabazStore
+@enduml

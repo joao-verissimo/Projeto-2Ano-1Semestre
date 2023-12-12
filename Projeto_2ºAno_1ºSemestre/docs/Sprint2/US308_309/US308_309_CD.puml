@@ -1,0 +1,84 @@
+@startuml
+
+class Delivery {
+    -Product product
+    -float quantity
+    -Producer producer
+    -Firm hub
+
+    +Delivery(Product product, float quantity, Producer producer, Firm hub)
+    +getProduct(): Product
+    +getQuantity(): float
+    +getProducer(): Producer
+    +getHub(): Firm
+}
+
+class DistributionNetwork {
+- MapGraph<User, Integer> graph
++ getGraph(): MapGraph
++ importUserCSV(String path): void
++ importDistanceCSV(String path): void
++ createUser(String locID, String userID, double lat, double lng): User
++ addUser(String locID, String userID, double lat, double lng): void
++ addPath(String locID1, String locID2, Integer weight): void
++ setHUBs(int n): TreeMap<Double, Firm>
++ clearHUBs(): void
++ findNearestNeighboursByType(int limit, ArrayList<LinkedList<User>> paths, ArrayList<Integer> dists, Class<?> clazz): TreeSet<DistancePathPair>
++ findNearestHUB(ArrayList<LinkedList<User>> paths, ArrayList<Integer> dists): Firm
+}
+
+class DistancePathPair{
+- Integer distance
+- LinkedList<User> path
++ DistancePathPair(Integer distance, LinkedList<User> path)
++ getDistance(): Integer
++ getPath(): LinkedList<User>
+}
+
+class Company {
+- DistributionNetwork distributionNetwork
+- DispatchList dispatchList
+- CabazStore cabazStore
++ getInstance(): Company
++ getDistributionNetwork(): DistributionNetwork
++ getDispatchList(): DispatchList
++ getCabazStore(): CabazStore
+}
+
+class DispatchList {
+-Map<Integer, Map<User, ArrayList<Delivery>>> dispatchList
++getDispatchList(): Map<Integer, Map<User, ArrayList<DispatchList.Delivery>>>
++createDispatchList(int day): void
++createDispatchListNearest(int day, int limit): void
++findNearestProducerAvailableProduct(Firm hub, int day, Map.Entry<Product, Float> product,HashMap<Firm, TreeSet<DistributionNetwork.DistancePathPair>> closestProducersToHUB): Producer
++findProducerAvailableProduct(int day, Map.Entry<Product, Float> product): Producer
++removeProducts(Producer producer, Map.Entry<Product, Float> productOrder, int day): void
++addToMap(int day, User user, Delivery delivery): void
+}
+
+class CreateDispatchListController {
+- DistributionNetwork distributionNetwork;
+   -  CabazStore cabazStore
+    - DispatchList dispatchList
+    +createDispatchListNearest(int day, int limit): void
+    +createDispatchList(int day): void
+    +getDispatchList(): Map<Integer, Map<User, ArrayList<DispatchList.Delivery>>>
+}
+
+class CreateDispatchListUI {
+}
+
+class CabazStore {
+}
+
+DispatchList *-- Delivery
+DistributionNetwork *-- DistancePathPair
+CreateDispatchListController --> Company
+CreateDispatchListUI --> CreateDispatchListController
+Company --> DispatchList
+Company --> DistributionNetwork
+DispatchList <.. DistributionNetwork
+DispatchList <.. CabazStore
+CabazStore <-- Cabaz
+
+@enduml

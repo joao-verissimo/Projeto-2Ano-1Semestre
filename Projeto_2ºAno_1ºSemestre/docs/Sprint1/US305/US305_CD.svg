@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="453px" preserveAspectRatio="none" style="width:545px;height:453px;background:#FFFFFF;" version="1.1" viewBox="0 0 545 453" width="545px" zoomAndPan="magnify"><defs/><g><!--MD5=[4533588fb66c6fa31a6e04bf29ae6161]
+class Algorithms--><g id="elem_Algorithms"><rect codeLine="3" fill="#F1F1F1" height="83.2188" id="Algorithms" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="531" x="7" y="7"/><ellipse cx="235.25" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M237.25,19.5 Q237.4531,19 237.6875,18.75 Q237.9219,18.5 238.1875,18.5 Q238.6563,18.5 238.9531,18.7813 Q239.25,19.0625 239.25,19.7188 L239.25,21.2813 Q239.25,21.9375 238.9688,22.2188 Q238.6875,22.5 238.25,22.5 Q237.8594,22.5 237.6094,22.3281 Q237.3594,22.1563 237.25,21.7031 Q237.2031,21.3906 237.0313,21.2188 Q236.7188,20.8906 236.1563,20.7031 Q235.5938,20.5 235.0313,20.5 Q234.3281,20.5 233.7344,20.7813 Q233.1563,21.0625 232.7031,21.6875 Q232.25,22.3125 232.25,23.1719 L232.25,24.0938 Q232.25,25.125 233.0938,25.8125 Q233.9375,26.5 235.4375,26.5 Q236.3281,26.5 236.9531,26.2969 Q237.3125,26.1875 237.7188,25.8281 Q237.9844,25.625 238.125,25.5625 Q238.2656,25.5 238.4375,25.5 Q238.7656,25.5 239,25.7656 Q239.25,26.0156 239.25,26.375 Q239.25,26.7188 238.9063,27.125 Q238.4063,27.7188 237.6094,28.0469 Q236.5625,28.5 235.2813,28.5 Q233.7813,28.5 232.5781,27.9063 Q231.6094,27.4375 230.9219,26.4219 Q230.25,25.4063 230.25,24.2031 L230.25,23.1094 Q230.25,21.8594 230.8438,20.7656 Q231.4531,19.6719 232.5,19.0938 Q233.5625,18.5 234.75,18.5 Q235.4688,18.5 236.0938,18.75 Q236.7188,19 237.25,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="255.75" y="28.7285">Algorithms</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="537" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="537" y1="47" y2="47"/><ellipse cx="18" cy="58" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="27" y="65.5332">kruskal(Graph&lt;V, E&gt; g)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="72.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="505" x="27" y="83.1426">DepthFirstSearch(Graph&lt;V, E&gt; g, V vOrig,boolean[] visited, LinkedList&lt;V&gt; qdfs)</text></g><!--MD5=[706e73df52f3df32f52be1ce9adb217e]
+class Graph--><g id="elem_Graph"><rect codeLine="8" fill="#F1F1F1" height="118.4375" id="Graph" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="114" x="73.5" y="150"/><ellipse cx="107.4" cy="166" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M109.4,162.5 Q109.6031,162 109.8375,161.75 Q110.0719,161.5 110.3375,161.5 Q110.8063,161.5 111.1031,161.7813 Q111.4,162.0625 111.4,162.7188 L111.4,164.2813 Q111.4,164.9375 111.1188,165.2188 Q110.8375,165.5 110.4,165.5 Q110.0094,165.5 109.7594,165.3281 Q109.5094,165.1563 109.4,164.7031 Q109.3531,164.3906 109.1813,164.2188 Q108.8688,163.8906 108.3063,163.7031 Q107.7438,163.5 107.1813,163.5 Q106.4781,163.5 105.8844,163.7813 Q105.3063,164.0625 104.8531,164.6875 Q104.4,165.3125 104.4,166.1719 L104.4,167.0938 Q104.4,168.125 105.2438,168.8125 Q106.0875,169.5 107.5875,169.5 Q108.4781,169.5 109.1031,169.2969 Q109.4625,169.1875 109.8688,168.8281 Q110.1344,168.625 110.275,168.5625 Q110.4156,168.5 110.5875,168.5 Q110.9156,168.5 111.15,168.7656 Q111.4,169.0156 111.4,169.375 Q111.4,169.7188 111.0563,170.125 Q110.5563,170.7188 109.7594,171.0469 Q108.7125,171.5 107.4313,171.5 Q105.9313,171.5 104.7281,170.9063 Q103.7594,170.4375 103.0719,169.4219 Q102.4,168.4063 102.4,167.2031 L102.4,166.1094 Q102.4,164.8594 102.9938,163.7656 Q103.6031,162.6719 104.65,162.0938 Q105.7125,161.5 106.9,161.5 Q107.6188,161.5 108.2438,161.75 Q108.8688,162 109.4,162.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="125.6" y="171.7285">Graph</text><line style="stroke:#181818;stroke-width:0.5;" x1="74.5" x2="186.5" y1="182" y2="182"/><line style="stroke:#181818;stroke-width:0.5;" x1="74.5" x2="186.5" y1="190" y2="190"/><ellipse cx="84.5" cy="201" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88" x="93.5" y="208.5332">numVertices()</text><ellipse cx="84.5" cy="218.6094" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="93.5" y="226.1426">key()</text><ellipse cx="84.5" cy="236.2188" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="93.5" y="243.752">vertices()</text><ellipse cx="84.5" cy="253.8281" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="93.5" y="261.3613">isDirected()</text></g><!--MD5=[2e2f8c8f62c4eb3bc59a59727cfd81a5]
+class Edge--><g id="elem_Edge"><rect codeLine="15" fill="#F1F1F1" height="118.4375" id="Edge" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="100" x="80.5" y="328"/><ellipse cx="111.25" cy="344" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M113.25,340.5 Q113.4531,340 113.6875,339.75 Q113.9219,339.5 114.1875,339.5 Q114.6563,339.5 114.9531,339.7813 Q115.25,340.0625 115.25,340.7188 L115.25,342.2813 Q115.25,342.9375 114.9688,343.2188 Q114.6875,343.5 114.25,343.5 Q113.8594,343.5 113.6094,343.3281 Q113.3594,343.1563 113.25,342.7031 Q113.2031,342.3906 113.0313,342.2188 Q112.7188,341.8906 112.1563,341.7031 Q111.5938,341.5 111.0313,341.5 Q110.3281,341.5 109.7344,341.7813 Q109.1563,342.0625 108.7031,342.6875 Q108.25,343.3125 108.25,344.1719 L108.25,345.0938 Q108.25,346.125 109.0938,346.8125 Q109.9375,347.5 111.4375,347.5 Q112.3281,347.5 112.9531,347.2969 Q113.3125,347.1875 113.7188,346.8281 Q113.9844,346.625 114.125,346.5625 Q114.2656,346.5 114.4375,346.5 Q114.7656,346.5 115,346.7656 Q115.25,347.0156 115.25,347.375 Q115.25,347.7188 114.9063,348.125 Q114.4063,348.7188 113.6094,349.0469 Q112.5625,349.5 111.2813,349.5 Q109.7813,349.5 108.5781,348.9063 Q107.6094,348.4375 106.9219,347.4219 Q106.25,346.4063 106.25,345.2031 L106.25,344.1094 Q106.25,342.8594 106.8438,341.7656 Q107.4531,340.6719 108.5,340.0938 Q109.5625,339.5 110.75,339.5 Q111.4688,339.5 112.0938,339.75 Q112.7188,340 113.25,340.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33" x="128.75" y="349.7285">Edge</text><line style="stroke:#181818;stroke-width:0.5;" x1="81.5" x2="179.5" y1="360" y2="360"/><line style="stroke:#181818;stroke-width:0.5;" x1="81.5" x2="179.5" y1="368" y2="368"/><ellipse cx="91.5" cy="379" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="100.5" y="386.5332">getVOrig()</text><ellipse cx="91.5" cy="396.6094" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="100.5" y="404.1426">getVDest()</text><ellipse cx="91.5" cy="414.2188" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="100.5" y="421.752">getWeight()</text><ellipse cx="91.5" cy="431.8281" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="100.5" y="439.3613">equals()</text></g><!--MD5=[b122bab300f80f5d31a622e2bae54847]
+class MapGraph--><g id="elem_MapGraph"><rect codeLine="21" fill="#F1F1F1" height="48" id="MapGraph" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="99" x="223" y="185"/><ellipse cx="238" cy="201" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M240,197.5 Q240.2031,197 240.4375,196.75 Q240.6719,196.5 240.9375,196.5 Q241.4063,196.5 241.7031,196.7813 Q242,197.0625 242,197.7188 L242,199.2813 Q242,199.9375 241.7188,200.2188 Q241.4375,200.5 241,200.5 Q240.6094,200.5 240.3594,200.3281 Q240.1094,200.1563 240,199.7031 Q239.9531,199.3906 239.7813,199.2188 Q239.4688,198.8906 238.9063,198.7031 Q238.3438,198.5 237.7813,198.5 Q237.0781,198.5 236.4844,198.7813 Q235.9063,199.0625 235.4531,199.6875 Q235,200.3125 235,201.1719 L235,202.0938 Q235,203.125 235.8438,203.8125 Q236.6875,204.5 238.1875,204.5 Q239.0781,204.5 239.7031,204.2969 Q240.0625,204.1875 240.4688,203.8281 Q240.7344,203.625 240.875,203.5625 Q241.0156,203.5 241.1875,203.5 Q241.5156,203.5 241.75,203.7656 Q242,204.0156 242,204.375 Q242,204.7188 241.6563,205.125 Q241.1563,205.7188 240.3594,206.0469 Q239.3125,206.5 238.0313,206.5 Q236.5313,206.5 235.3281,205.9063 Q234.3594,205.4375 233.6719,204.4219 Q233,203.4063 233,202.2031 L233,201.1094 Q233,199.8594 233.5938,198.7656 Q234.2031,197.6719 235.25,197.0938 Q236.3125,196.5 237.5,196.5 Q238.2188,196.5 238.8438,196.75 Q239.4688,197 240,197.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67" x="252" y="206.7285">MapGraph</text><line style="stroke:#181818;stroke-width:0.5;" x1="224" x2="321" y1="217" y2="217"/><line style="stroke:#181818;stroke-width:0.5;" x1="224" x2="321" y1="225" y2="225"/></g><!--MD5=[b7b072196a724e538165319251b4d539]
+class MatrixGraph--><g id="elem_MatrixGraph"><rect codeLine="23" fill="#F1F1F1" height="48" id="MatrixGraph" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="109" x="357" y="185"/><ellipse cx="372" cy="201" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M374,197.5 Q374.2031,197 374.4375,196.75 Q374.6719,196.5 374.9375,196.5 Q375.4063,196.5 375.7031,196.7813 Q376,197.0625 376,197.7188 L376,199.2813 Q376,199.9375 375.7188,200.2188 Q375.4375,200.5 375,200.5 Q374.6094,200.5 374.3594,200.3281 Q374.1094,200.1563 374,199.7031 Q373.9531,199.3906 373.7813,199.2188 Q373.4688,198.8906 372.9063,198.7031 Q372.3438,198.5 371.7813,198.5 Q371.0781,198.5 370.4844,198.7813 Q369.9063,199.0625 369.4531,199.6875 Q369,200.3125 369,201.1719 L369,202.0938 Q369,203.125 369.8438,203.8125 Q370.6875,204.5 372.1875,204.5 Q373.0781,204.5 373.7031,204.2969 Q374.0625,204.1875 374.4688,203.8281 Q374.7344,203.625 374.875,203.5625 Q375.0156,203.5 375.1875,203.5 Q375.5156,203.5 375.75,203.7656 Q376,204.0156 376,204.375 Q376,204.7188 375.6563,205.125 Q375.1563,205.7188 374.3594,206.0469 Q373.3125,206.5 372.0313,206.5 Q370.5313,206.5 369.3281,205.9063 Q368.3594,205.4375 367.6719,204.4219 Q367,203.4063 367,202.2031 L367,201.1094 Q367,199.8594 367.5938,198.7656 Q368.2031,197.6719 369.25,197.0938 Q370.3125,196.5 371.5,196.5 Q372.2188,196.5 372.8438,196.75 Q373.4688,197 374,197.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="386" y="206.7285">MatrixGraph</text><line style="stroke:#181818;stroke-width:0.5;" x1="358" x2="465" y1="217" y2="217"/><line style="stroke:#181818;stroke-width:0.5;" x1="358" x2="465" y1="225" y2="225"/></g><!--MD5=[1396405ba077f5ea282f271580157cc1]
+link Algorithms to MapGraph--><g id="link_Algorithms_MapGraph"><path codeLine="25" d="M272.5,90.32 C272.5,118.41 272.5,154.99 272.5,179.86 " fill="none" id="Algorithms-to-MapGraph" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="272.5,184.98,276.5,175.98,272.5,179.98,268.5,175.98,272.5,184.98" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[6f07585409b102dc4da38f4da03f6207]
+link Algorithms to MatrixGraph--><g id="link_Algorithms_MatrixGraph"><path codeLine="26" d="M308.3,90.32 C333.34,118.88 366.09,156.22 387.91,181.1 " fill="none" id="Algorithms-to-MatrixGraph" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="391.32,184.98,388.4038,175.5728,388.0275,181.2171,382.3832,180.8408,391.32,184.98" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[327a73a24aba32618596f7ab30ba89bf]
+link Algorithms to Graph--><g id="link_Algorithms_Graph"><path codeLine="27" d="M235.93,90.32 C220.68,107.34 202.63,127.49 185.81,146.26 " fill="none" id="Algorithms-to-Graph" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="182.47,150,191.4562,145.9691,185.8077,146.2772,185.4996,140.6287,182.47,150" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[627c719221e760b279cf7d2e52d47228]
+link Graph to Edge--><g id="link_Graph_Edge"><path codeLine="28" d="M130.5,268.12 C130.5,285.69 130.5,305.07 130.5,322.94 " fill="none" id="Graph-to-Edge" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="130.5,327.94,134.5,318.94,130.5,322.94,126.5,318.94,130.5,327.94" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[d442d7b22183288459511ac7874e5a6b]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class Algorithms {
++ kruskal(Graph<V, E> g)
+- DepthFirstSearch(Graph<V, E> g, V vOrig,boolean[] visited, LinkedList<V> qdfs)
+}
+
+class Graph {
++ numVertices()
++ key()
++ vertices()
++ isDirected()
+}
+
+class Edge{
++ getVOrig()
++ getVDest()
++ getWeight()
++ equals()
+}
+class MapGraph{
+}
+class MatrixGraph{
+}
+Algorithms - -> MapGraph
+Algorithms - -> MatrixGraph
+Algorithms- -> Graph
+Graph- ->Edge
+
+@enduml
+
+@startuml
+
+class Algorithms {
++ kruskal(Graph<V, E> g)
+- DepthFirstSearch(Graph<V, E> g, V vOrig,boolean[] visited, LinkedList<V> qdfs)
+}
+
+class Graph {
++ numVertices()
++ key()
++ vertices()
++ isDirected()
+}
+
+class Edge{
++ getVOrig()
++ getVDest()
++ getWeight()
++ equals()
+}
+class MapGraph{
+}
+class MatrixGraph{
+}
+Algorithms - -> MapGraph
+Algorithms - -> MatrixGraph
+Algorithms- -> Graph
+Graph- ->Edge
+
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 14:29:17 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

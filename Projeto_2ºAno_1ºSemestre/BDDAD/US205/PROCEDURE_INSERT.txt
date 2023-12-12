@@ -1,0 +1,65 @@
+CREATE OR REPLACE PROCEDURE INSERT_CLIENTE
+    (
+    P_ID tblCliente.attrIdCliente%TYPE, 
+    P_NOME tblCliente.attrNome%TYPE,
+    P_EMAIL tblCliente.attrEmail%TYPE,
+    P_NIF tblCliente.attrNumeroFiscal%TYPE,
+    P_CORRESPONDENCIA tblCliente.attrMoradaCorrespondencia%TYPE,
+    P_ENTREGA tblCliente.attrMoradaEntrega%TYPE,
+    P_PLAFOND tblCliente.attrPlafond%TYPE,
+    P_NIVEL tblCliente.attrNivel%TYPE
+    P_NUMEROINCIDENTES tblCliente.attrNumeroIncidentes%TYPE,
+    P_DATAULTIMOINCIDENTE tblCliente.attrDataUltimoIncidente%TYPE,
+    P_NUMEROENCOMENDASULTIMOANO tblCliente.attrNumeroEncomendasUltimoAno%TYPE,
+    P_VALORTOTALULTIMOANO tblCliente.attrValorTotalUltimoAno%TYPE
+    )
+IS
+BEGIN
+    INSERT INTO Cliente 
+    (
+    attrIdCliente,
+    attrNome,
+    attrNumeroFiscal,
+    attrEmail,
+    attrMoradaCorrespondencia,
+    attrMoradaEntrega,
+    attrPlafond,
+    attrNivel,
+    attrNumeroIncidentes,
+    attrDataUltimoIncidente,
+    attrNumeroEncomendasUltimoAno,
+    attrValorTotalUltimoAno,
+    ) 
+    VALUES (
+        P_ID,
+        P_NOME,
+        P_EMAIL, 
+        P_NIF, P_CORRESPONDENCIA, 
+        P_ENTREGA, P_PLAFOND, 
+        P_NIVEL
+        P_NUMEROINCIDENTES, 
+        P_DATAULTIMOINCIDENTE, 
+        P_NUMEROENCOMENDASULTIMOANO,
+        P_VALORTOTALULTIMOANO
+        );
+
+END;
+
+-- CHAMADA DO PROCEDURE --
+BEGIN
+    INSERT_CLIENTE(       
+        P_ID,
+        P_NOME,
+        P_EMAIL, 
+        P_NIF, P_CORRESPONDENCIA, 
+        P_ENTREGA, P_PLAFOND, 
+        P_NIVEL
+        P_NUMEROINCIDENTES, 
+        P_DATAULTIMOINCIDENTE, 
+        P_NUMEROENCOMENDASULTIMOANO,
+        P_VALORTOTALULTIMOANO
+        );
+END;
+
+-- TESTAR SE O CLIENTE FOI INSERIDO NA TABELA
+SELECT * FROM Cliente;

@@ -1,0 +1,25 @@
+CREATE OR REPLACE PROCEDURE SETORES_ORDEM_ID_CULTURA
+IS
+    V_ID_CULTURA tblCultura.attrIdCultura%TYPE;
+    V_TIPO tblCultura.attrTipo%TYPE;
+    V_NOME tblCultura.attrNome%TYPE;
+
+BEGIN
+    FOR C IN (
+        SELECT attrIdCultura, attrTipo, attrNome
+        INTO V_ID_CULTURA, V_NOME, V_TIPO
+        FROM tblCultura
+        ORDER BY attrIdCultura
+    )
+    LOOP
+        V_ID_CULTURA := C.attrIdCultura;
+        V_TIPO := C.attrTipo;
+        V_NOME := C.attrNome;
+
+    END LOOP;
+END;
+
+
+--TEST--
+
+EXEC SETORES_ORDEM_ID_CULTURA

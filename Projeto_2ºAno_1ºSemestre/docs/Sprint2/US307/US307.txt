@@ -1,0 +1,16 @@
+importCabazFromCSV: This method reads in data from a CSV file and stores it in three nested maps. It takes in two arguments: a filePath to the CSV file and a MapGraph object. The method first reads in the file line by line, and for each line, it splits the values by the comma character and extracts the necessary data to create a Cabaz object. Then, it checks the type of user (Client, Firm, or Producer) and stores the Cabaz object in the appropriate nested map.
+getCabazC: This method returns the nested map that stores Cabaz objects for Client users.
+getCabazE: This method returns the nested map that stores Cabaz objects for Firm users.
+getCabazP: This method returns the nested map that stores Cabaz objects for Producer users.
+totalProducts: This method calculates the total number of products from all Cabaz objects stored in the nested maps. It iterates through the three nested maps, sums the number of products from each Cabaz object, and returns the total number of products.
+Time Complexity: O(n) Space Complexity: O(n) where n is the number of Cabaz objects.
+
+The Cabaz class represents a collection of products that a user has purchased on a given day. It has three fields: user which represents the user who made the purchase, day which represents the day of the purchase, and products which is an array of float values representing the products that were purchased. The Cabaz class has a constructor that initializes these fields, and it also has getter and setter methods for each field. It also has an overridden toString() method for printing the Cabaz object.
+
+The CabazStore class is a store for Cabaz objects. It has three maps, cabazC, cabazE, and cabazP, which are used to store Cabaz objects for different types of users (clients, firms, and producers, respectively). The CabazStore class has a method called importCabazFromCSV that imports Cabaz objects from a CSV file. This method takes in the path to the CSV file and a MapGraph object representing the distribution network. It reads the data from the CSV file and creates Cabaz objects using the data. It then adds the Cabaz objects to the appropriate map (cabazC, cabazE, or cabazP) based on the user's type and the day of the purchase.
+
+With this understanding of the classes, we can plan their implementation in the following way:
+
+Implement the Cabaz class by defining its fields, constructor, getters, setters, and toString() method.
+Implement the CabazStore class by defining its maps and importCabazFromCSV method. The importCabazFromCSV method should read the data from the CSV file and create Cabaz objects using the data. It should then add the Cabaz objects to the appropriate map based on the user's type and the day of the purchase.
+Test the Cabaz and CabazStore classes by creating instances of these classes and calling their methods. Check the output to ensure that the classes are working as expected.

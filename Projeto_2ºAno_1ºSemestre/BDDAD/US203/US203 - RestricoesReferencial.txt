@@ -1,0 +1,141 @@
+ALTER TABLE tblSensor ADD CONSTRAINT fkTipoSensorSensor FOREIGN KEY (attrTipoSensor) REFERENCES tblTipoSensor(attrTipoSensor);
+
+ALTER TABLE tblSensorCultura ADD CONSTRAINT fkSensorSensorCultura FOREIGN KEY (attrIdSensor) REFERENCES tblSensor(attrIdSensor);
+ALTER TABLE tblSensorCultura ADD CONSTRAINT fkCulturaSensorCultura FOREIGN KEY (attrIdCultura) REFERENCES tblCultura(attrIdCultura);
+
+ALTER TABLE tblCulturaSetor ADD CONSTRAINT fkSetorCulturaSetor FOREIGN KEY (attrIdSetor) REFERENCES tblSetor(attrIdSetor);
+ALTER TABLE tblCulturaSetor ADD CONSTRAINT fkCulturaCulturaSetor FOREIGN KEY (attrIdCultura) REFERENCES tblCultura(attrIdCultura);
+
+ALTER TABLE tblSetorParcela ADD CONSTRAINT fkParcelaSetorParcela FOREIGN KEY (attrIdParcela) REFERENCES tblParcela(attrIdParcela);
+ALTER TABLE tblSetorParcela ADD CONSTRAINT fkSetorSetorParcela FOREIGN KEY (attrIdSetor) REFERENCES tblSetor(attrIdSetor);
+
+ALTER TABLE tblSensorEstacaoMeteoro ADD CONSTRAINT fkSensorSensorEstacaoMeteoro FOREIGN KEY (attrIdSensor) REFERENCES tblSensor(attrIdSensor);
+ALTER TABLE tblSensorEstacaoMeteoro ADD CONSTRAINT fkEstacaoSensorEstacaoMeteoro FOREIGN KEY (attrIdEstacao) REFERENCES tblEstacaoMeteorologica(attrIdEstacaoMeteorologica);
+
+ALTER TABLE tblParcelaInstalacaoAgricola ADD CONSTRAINT fkParcelaParcelaInstalacaoAgricola FOREIGN KEY (attrIdParcela) REFERENCES tblParcela(attrIdParcela);
+ALTER TABLE tblParcelaInstalacaoAgricola ADD CONSTRAINT fkInstalacaoParcelaInstalacaoAgricola FOREIGN KEY (attrIdInstalacaoAgricola) REFERENCES tblInstalacaoAgricola(attrIdInstalacaoAgricola);
+
+ALTER TABLE tblSistemaRegaInstalacaoAgricola ADD CONSTRAINT fkRegaSistemaRegaInstalacaoAgricola FOREIGN KEY (attrIdSistemaRega) REFERENCES tblSistemaRega(attrIdSistemaRega);
+ALTER TABLE tblSistemaRegaInstalacaoAgricola ADD CONSTRAINT fkInstalacaoSistemaRegaInstalacaoAgricola FOREIGN KEY (attrIdInstalacaoAgricola) REFERENCES tblInstalacaoAgricola(attrIdInstalacaoAgricola);
+
+ALTER TABLE tblSistemaRega ADD CONSTRAINT fkTipoRegaSistemaRega FOREIGN KEY (attrTipoRega) REFERENCES tblTipoRega(attrTipoRega);
+
+ALTER TABLE tblSistemaRegaTubagem ADD CONSTRAINT fkRegaSistemaRegaTubagem FOREIGN KEY (attrIdSistemaRega) REFERENCES tblSistemaRega(attrIdSistemaRega);
+ALTER TABLE tblSistemaRegaTubagem ADD CONSTRAINT fkTubagemSistemaRegaTubagem FOREIGN KEY (attrIdTubagem) REFERENCES tblSistemaTubagem(attrIdSistemaTubagem);
+
+ALTER TABLE tblSistemaRegaIrrigador ADD CONSTRAINT fkIrrigadorSistemaRegaIrrigador FOREIGN KEY (attrIdIrrigador) REFERENCES tblIrrigador(attrIdIrrigador);
+ALTER TABLE tblSistemaRegaIrrigador ADD CONSTRAINT fkRegaSistemaRegaIrrigador FOREIGN KEY (attrIdSistemaRega) REFERENCES tblSistemaRega(attrIdSistemaRega);
+
+ALTER TABLE tblSistemaRegaBombeador ADD CONSTRAINT fkBombeadorSistemaRegaBombeador FOREIGN KEY (attrIdBombeador) REFERENCES tblBombeador(attrIdBombeador);
+ALTER TABLE tblSistemaRegaBombeador ADD CONSTRAINT fkRegaSistemaRegaBombeador FOREIGN KEY (attrIdSistemaRega) REFERENCES tblSistemaRega(attrIdSistemaRega);
+
+ALTER TABLE tblSistemaRegaControlador ADD CONSTRAINT fkControladorSistemaRegaControlador FOREIGN KEY (attrIdControlador) REFERENCES tblControlador(attrIdControlador);
+ALTER TABLE tblSistemaRegaControlador ADD CONSTRAINT fkRegaSistemaRegaControlador FOREIGN KEY (attrIdSistemaRega) REFERENCES tblSistemaRega(attrIdSistemaRega);
+
+ALTER TABLE tblSistemaRegaTanque ADD CONSTRAINT fkTanqueSistemaRegaTanque FOREIGN KEY (attrIdTanque) REFERENCES tblTanque(attrIdTanque);
+ALTER TABLE tblSistemaRegaTanque ADD CONSTRAINT fkRegaSistemaRegaTanque FOREIGN KEY (attrIdSistemaRega) REFERENCES tblSistemaRega(attrIdSistemaRega);
+
+ALTER TABLE tblComposicaoSistemaTubagem ADD CONSTRAINT fkSistemaComposicaoSistemaTubagem FOREIGN KEY (attrIdSistemaTubagem) REFERENCES tblSistemaTubagem(attrIdSistemaTubagem);
+ALTER TABLE tblComposicaoSistemaTubagem ADD CONSTRAINT fkPrimariaComposicaoSistemaTubagem FOREIGN KEY (attrIdTubagemPrimaria) REFERENCES tblTubagemPrimaria(attrIdTubagemPrimaria);
+ALTER TABLE tblComposicaoSistemaTubagem ADD CONSTRAINT fkSecundariaComposicaoSistemaTubagem FOREIGN KEY (attrIdTubagemSecundaria) REFERENCES tblTubagemSecundaria(attrIdTubagemSecundaria);
+
+ALTER TABLE tblControladorEletrovalvula ADD CONSTRAINT fkControladorControladorEletrovalvula FOREIGN KEY (attrIdControlador) REFERENCES tblControlador(attrIdControlador);
+ALTER TABLE tblControladorEletrovalvula ADD CONSTRAINT fkEletrovalvulaControladorEletrovalvula FOREIGN KEY (attrIdEletrovalvula) REFERENCES tblEletrovalvula(attrIdEletrovalvula);
+
+ALTER TABLE tblIrrigador ADD CONSTRAINT fkTipoIrrigador FOREIGN KEY (attrTipo) REFERENCES tblTipoIrrigador(attrTipoIrrigador);
+
+ALTER TABLE tblEdificioInstalacaoAgricola ADD CONSTRAINT fkInstalacaoEdificioInstalacaoAgricola FOREIGN KEY (attrIdInstalacaoAgricola) REFERENCES tblInstalacaoAgricola(attrIdInstalacaoAgricola);
+ALTER TABLE tblEdificioInstalacaoAgricola ADD CONSTRAINT fkEdificioEdificioInstalacaoAgricola FOREIGN KEY (attrIdEdificio) REFERENCES tblEdificio(attrIdEdificio);
+
+ALTER TABLE tblEstabulo ADD CONSTRAINT fkEstabulo FOREIGN KEY (attrIdEstabulo) REFERENCES tblEdificio(attrIdEdificio);
+
+ALTER TABLE tblArmazem ADD CONSTRAINT fkArmazem FOREIGN KEY (attrIdArmazem) REFERENCES tblEdificio(attrIdEdificio);
+
+ALTER TABLE tblGaragem ADD CONSTRAINT fkGaragem FOREIGN KEY (attrIdGaragem) REFERENCES tblEdificio(attrIdEdificio);
+
+ALTER TABLE tblAnimalEstabulo ADD CONSTRAINT fkEstabuloAnimalEstabulo FOREIGN KEY (attrIdEstabulo) REFERENCES tblEstabulo(attrIdEstabulo);
+ALTER TABLE tblAnimalEstabulo ADD CONSTRAINT fkAnimalAnimalEstabulo FOREIGN KEY (attrIdAnimal) REFERENCES tblAnimal(attrIdAnimal);
+
+ALTER TABLE tblArmazenarRacao ADD CONSTRAINT fkArmazemArmazenarRacao FOREIGN KEY (attrIdArmazem) REFERENCES tblArmazem(attrIdArmazem);
+ALTER TABLE tblArmazenarRacao ADD CONSTRAINT fkRacaoArmazenarRacao FOREIGN KEY (attrIdRacao) REFERENCES tblRacao(attrIdRacao);
+
+ALTER TABLE tblArmazenarColheita ADD CONSTRAINT fkArmazemArmazenarColheita FOREIGN KEY (attrIdArmazem) REFERENCES tblArmazem(attrIdArmazem);
+ALTER TABLE tblArmazenarColheita ADD CONSTRAINT fkColheitaArmazenarColheita FOREIGN KEY (attrIdColheita) REFERENCES tblColheita(attrIdColheita);
+
+ALTER TABLE tblArmazenarFatorProducao ADD CONSTRAINT fkArmazemArmazenarFatorProducao FOREIGN KEY (attrIdArmazem) REFERENCES tblArmazem(attrIdArmazem);
+ALTER TABLE tblArmazenarFatorProducao ADD CONSTRAINT fkFatorArmazenarFatorProducao FOREIGN KEY (attrIdFatorProducao) REFERENCES tblFatorProducao(attrIdFatorProducao);
+
+ALTER TABLE tblArmazenarVeiculo ADD CONSTRAINT fkArmazemArmazenarVeiculo FOREIGN KEY (attrIdGaragem) REFERENCES tblGaragem(attrIdGaragem);
+ALTER TABLE tblArmazenarVeiculo ADD CONSTRAINT fkVeiculoArmazenarVeiculo FOREIGN KEY (attrIdVeiculo) REFERENCES tblVeiculo(attrIdVeiculo);
+
+ALTER TABLE tblArmazenarEquipamento ADD CONSTRAINT fkArmazemArmazenarEquipamento FOREIGN KEY (attrIdGaragem) REFERENCES tblGaragem(attrIdGaragem);
+ALTER TABLE tblArmazenarEquipamento ADD CONSTRAINT fkEquipamentoArmazenarEquipamento FOREIGN KEY (attrIdEquipamento) REFERENCES tblEquipamento(attrIdEquipamento);
+
+ALTER TABLE tblProdutoAnimal ADD CONSTRAINT fkAnimalProdutoAnimal FOREIGN KEY (attrIdAnimal) REFERENCES tblAnimal(attrIdAnimal);
+ALTER TABLE tblProdutoAnimal ADD CONSTRAINT fkProdutoProdutoAnimal FOREIGN KEY (attrIdProduto) REFERENCES tblProdutoBiologico(attrIdProdutoBiologico);
+
+ALTER TABLE tblAlimentacaoAnimal ADD CONSTRAINT fkAnimalAlimentacaoAnimal FOREIGN KEY (attrIdAnimal) REFERENCES tblAnimal(attrIdAnimal);
+ALTER TABLE tblAlimentacaoAnimal ADD CONSTRAINT fkProdutoAlimentacaoAnimal FOREIGN KEY (attrIdProduto) REFERENCES tblProdutoBiologico(attrIdProdutoBiologico);
+ALTER TABLE tblAlimentacaoAnimal ADD CONSTRAINT fkRacaoAlimentacaoAnimal FOREIGN KEY (attrIdRacao) REFERENCES tblRacao(attrIdRacao);
+
+ALTER TABLE tblProdutoColheita ADD CONSTRAINT fkProdutoProdutoColheita FOREIGN KEY (attrIdProduto) REFERENCES tblProdutoBiologico(attrIdProdutoBiologico);
+ALTER TABLE tblProdutoColheita ADD CONSTRAINT fkColheitaProdutoColheita FOREIGN KEY (attrIdColheita) REFERENCES tblColheita(attrIdColheita);
+
+ALTER TABLE tblProducaoInstalacao ADD CONSTRAINT fkCabazProducaoInstalacao FOREIGN KEY (attrIdCabaz) REFERENCES tblCabaz(attrIdCabaz);
+ALTER TABLE tblProducaoInstalacao ADD CONSTRAINT fkInstalacaoProducaoInstalacao FOREIGN KEY (attrIdInstalacaoAgricola) REFERENCES tblInstalacaoAgricola(attrIdInstalacaoAgricola);
+
+ALTER TABLE tblProdutoCabaz ADD CONSTRAINT fkCabazProdutoCabaz FOREIGN KEY (attrIdCabaz) REFERENCES tblCabaz(attrIdCabaz);
+ALTER TABLE tblProdutoCabaz ADD CONSTRAINT fkProdutoProdutoCabaz FOREIGN KEY (attrIdProduto) REFERENCES tblProdutoBiologico(attrIdProdutoBiologico);
+
+ALTER TABLE tblCabazEncomenda ADD CONSTRAINT fkCabazCabazEncomenda FOREIGN KEY (attrIdCabaz) REFERENCES tblCabaz(attrIdCabaz);
+ALTER TABLE tblCabazEncomenda ADD CONSTRAINT fkEncomendaCabazEncomenda FOREIGN KEY (attrIdEncomenda) REFERENCES tblEncomenda(attrIdEncomenda);
+
+ALTER TABLE tblEncomendaCliente ADD CONSTRAINT fkClienteEncomendaCliente FOREIGN KEY (attrIdCliente) REFERENCES tblCliente(attrIdCliente);
+ALTER TABLE tblEncomendaCliente ADD CONSTRAINT fkEncomendaEncomendaCliente FOREIGN KEY (attrIdEncomenda) REFERENCES tblEncomenda(attrIdEncomenda);
+
+ALTER TABLE tblGestorOperacaoDistribuicao ADD CONSTRAINT fkGestorGestorOperacaoDistribuicao FOREIGN KEY (attrIdGestorDistribuicao) REFERENCES tblGestorDistribuicao(attrIdGestor);
+ALTER TABLE tblGestorOperacaoDistribuicao ADD CONSTRAINT fkOperacaoGestorOperacaoDistribuicao FOREIGN KEY (attrIdOperacao) REFERENCES tblOperacaoDistribuicao(attrIdOperacao);
+ALTER TABLE tblGestorOperacaoDistribuicao ADD CONSTRAINT fkHubGestorOperacaoDistribuicao FOREIGN KEY (attrIdHub) REFERENCES tblHub(attrIdHub);
+
+ALTER TABLE tblCliente ADD CONSTRAINT fkNivelCliente FOREIGN KEY (attrNivel) REFERENCES tblNivelCliente(attrIdNivel);
+
+ALTER TABLE tblAtor ADD CONSTRAINT fkUtilizadorAtor FOREIGN KEY (attrIdUtilizador) REFERENCES tblUtilizador(attrIdUtilizador);
+
+ALTER TABLE tblRecolherEncomenda ADD CONSTRAINT fkOperacaoRecolherEncomenda FOREIGN KEY (attrIdOperacao) REFERENCES tblOperacaoDistribuicao(attrIdOperacao);
+ALTER TABLE tblRecolherEncomenda ADD CONSTRAINT fkCondutorRecolherEncomenda FOREIGN KEY (attrIdCondutor) REFERENCES tblCondutor(attrIdCondutor);
+ALTER TABLE tblRecolherEncomenda ADD CONSTRAINT fkEncomendaRecolherEncomenda FOREIGN KEY (attrIdEncomenda) REFERENCES tblEncomenda(attrIdEncomenda);
+ALTER TABLE tblRecolherEncomenda ADD CONSTRAINT fkHubRecolherEncomenda FOREIGN KEY (attrIdHub) REFERENCES tblHub(attrIdHub);
+
+ALTER TABLE tblDistribuirEncomenda ADD CONSTRAINT fkOperacaoDistribuirEncomenda FOREIGN KEY (attrIdOperacao) REFERENCES tblOperacaoDistribuicao(attrIdOperacao);
+ALTER TABLE tblDistribuirEncomenda ADD CONSTRAINT fkCondutorDistribuirEncomenda FOREIGN KEY (attrIdCondutor) REFERENCES tblCondutor(attrIdCondutor);
+ALTER TABLE tblDistribuirEncomenda ADD CONSTRAINT fkEncomendaDistribuirEncomenda FOREIGN KEY (attrIdEncomenda) REFERENCES tblEncomenda(attrIdEncomenda);
+ALTER TABLE tblDistribuirEncomenda ADD CONSTRAINT fkHubDistribuirEncomenda FOREIGN KEY (attrIdHub) REFERENCES tblHub(attrIdHub);
+ALTER TABLE tblDistribuirEncomenda ADD CONSTRAINT fkClienteDistribuirEncomenda FOREIGN KEY (attrIdCliente) REFERENCES tblCliente(attrIdCliente);
+
+ALTER TABLE tblGestorOperacaoAgricola ADD CONSTRAINT fkGestorGestorOperacaoAgricola FOREIGN KEY (attrIdGestor) REFERENCES tblGestorAgricola(attrIdGestor);
+ALTER TABLE tblGestorOperacaoAgricola ADD CONSTRAINT fkOperacaoGestorOperacaoAgricola FOREIGN KEY (attrIdOperacao) REFERENCES tblOperacaoAgricola(attrIdOperacao);
+ALTER TABLE tblGestorOperacaoAgricola ADD CONSTRAINT fkInstalacaoGestorOperacaoAgricola FOREIGN KEY (attrIdInstalacao) REFERENCES tblInstalacaoAgricola(attrIdInstalacaoAgricola);
+
+ALTER TABLE tblOperacaoRega ADD CONSTRAINT fkOperacaoOperacaoRega FOREIGN KEY (attrIdOperacao) REFERENCES tblOperacaoAgricola(attrIdOperacao);
+ALTER TABLE tblOperacaoRega ADD CONSTRAINT fkRegaOperacaoRega FOREIGN KEY (attrIdSistemaRega) REFERENCES tblSistemaRega(attrIdSistemaRega);
+ALTER TABLE tblOperacaoRega ADD CONSTRAINT fkGestorOperacaoRega FOREIGN KEY (attrIdGestor) REFERENCES tblGestorAgricola(attrIdGestor);
+ALTER TABLE tblOperacaoRega ADD CONSTRAINT fkSetorOperacaoRega FOREIGN KEY (attrIdSetor) REFERENCES tblSetor(attrIdSetor);
+
+ALTER TABLE tblOperacaoMeteorologia ADD CONSTRAINT fkOperacaoOperacaoMeteorologia FOREIGN KEY (attrIdOperacao) REFERENCES tblOperacaoAgricola(attrIdOperacao);
+ALTER TABLE tblOperacaoMeteorologia ADD CONSTRAINT fkEstacaoOperacaoMeteorologia FOREIGN KEY (attrIdEstacaoMeteorologica) REFERENCES tblEstacaoMeteorologica(attrIdEstacaoMeteorologica);
+ALTER TABLE tblOperacaoMeteorologia ADD CONSTRAINT fkGestorOperacaoMeteorologia FOREIGN KEY (attrIdGestor) REFERENCES tblGestorAgricola(attrIdGestor);
+ALTER TABLE tblOperacaoMeteorologia ADD CONSTRAINT fkSetorOperacaoMeteorologia FOREIGN KEY (attrIdSetor) REFERENCES tblSetor(attrIdSetor);
+
+ALTER TABLE tblOperacaoFertilizacao ADD CONSTRAINT fkOperacaoOperacaoFertilizacao FOREIGN KEY (attrIdOperacao) REFERENCES tblOperacaoAgricola(attrIdOperacao);
+ALTER TABLE tblOperacaoFertilizacao ADD CONSTRAINT fkFatorOperacaoFertilizacao  FOREIGN KEY (attrIdFatorProducao) REFERENCES tblFatorProducao(attrIdFatorProducao);
+ALTER TABLE tblOperacaoFertilizacao ADD CONSTRAINT fkGestorOperacaoFertilizacao  FOREIGN KEY (attrIdGestor) REFERENCES tblGestorAgricola(attrIdGestor);
+ALTER TABLE tblOperacaoFertilizacao ADD CONSTRAINT fkSetorOperacaoFertilizacao  FOREIGN KEY (attrIdSetor) REFERENCES tblSetor(attrIdSetor);
+
+ALTER TABLE tblOperacaoColheita ADD CONSTRAINT fkOperacaoOperacaoColheita FOREIGN KEY (attrIdOperacao) REFERENCES tblOperacaoAgricola(attrIdOperacao);
+ALTER TABLE tblOperacaoColheita ADD CONSTRAINT fkColheitaOperacaoColheita  FOREIGN KEY (attrIdColheita) REFERENCES tblColheita(attrIdColheita);
+ALTER TABLE tblOperacaoColheita ADD CONSTRAINT fkGestorOperacaoColheita  FOREIGN KEY (attrIdGestor) REFERENCES tblGestorAgricola(attrIdGestor);
+ALTER TABLE tblOperacaoColheita ADD CONSTRAINT fkSetorOperacaoColheita  FOREIGN KEY (attrIdSetor) REFERENCES tblSetor(attrIdSetor);
+ALTER TABLE tblOperacaoColheita ADD CONSTRAINT fkCulturaOperacaoColheita FOREIGN KEY (attrIdCultura) REFERENCES tblCultura(attrIdCultura);
+
+ALTER TABLE tblRegistoCadernoCampo ADD CONSTRAINT fkCadernoRegistoCadernoCampo  FOREIGN KEY (attrIdCaderno) REFERENCES tblCadernoCampo(attrIdCaderno);
+ALTER TABLE tblRegistoCadernoCampo ADD CONSTRAINT fkOperacaoRegistoCadernoCampo FOREIGN KEY (attrIdOperacao) REFERENCES tblOperacaoAgricola(attrIdOperacao);

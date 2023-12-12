@@ -1,0 +1,25 @@
+CREATE OR REPLACE PROCEDURE SETORES_TAMANHO_CRESCENTE
+IS
+     V_ID_SETOR tblSetor.attrIdSetor%TYPE,
+     V_DESCRICAO tblSetor.attrDescricao%TYPE,
+     V_AREA tblSetor.attrArea%TYPE;
+
+BEGIN
+    FOR C IN (
+        SELECT attrIdSetor, attrDescricao, attrArea
+        INTO V_ID_SETOR, V_DESCRICAO, V_AREA
+        FROM tblSetor
+        ORDER BY attrArea ASC
+    )
+    LOOP
+        V_ID_SETOR := C.attrIdSetor;
+        V_DESCRICAO := C.attrDescricao;
+        V_AREA := C.attrArea;
+    END LOOP;
+END;
+
+--TEST--
+
+BEGIN
+    SETORES_TAMANHO_CRESCENTE;
+END;

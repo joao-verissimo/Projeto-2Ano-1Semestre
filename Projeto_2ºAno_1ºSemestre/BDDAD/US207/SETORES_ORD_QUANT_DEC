@@ -1,0 +1,32 @@
+CREATE OR REPLACE PROCEDURE SETORES_ORDEM_QUANT_DEC
+IS
+     V_ID_SETOR tblSetor.attrIdSetor %TYPE;
+     V_DESIGNACAO tblSetor.attrDescricao%TYPE;
+     V_AREA tblSetor.attrArea%TYPE;
+     V_QUANTIDADE tbColheita.attrQuantidade%TYPE;
+
+BEGIN
+    FOR C IN
+    (
+        SELECT attrIdSetor , attrDescricao , attrArea , Quantidade
+    INTO V_ID_SETOR
+    , V_DESIGNACAO, V_AREA, V_QUANTIDADE
+        FROM tblSetor, tbColheita
+        ORDER BY Quantidade DESC
+    )
+    LOOP
+        V_ID_SETOR := C.attrIdSetor
+;
+V_DESIGNACAO := C.attrDescricao ;
+        V_AREA := C.attrArea ;
+        V_QUANTIDADE := C.attrQuantidade;
+        DBMS_OUTPUT.PUT_LINE
+('ID Setor: ' || V_ID_SETOR);
+        DBMS_OUTPUT.PUT_LINE
+('Designacao: ' || V_DESIGNACAO);
+        DBMS_OUTPUT.PUT_LINE
+('Area: ' || V_AREA);
+        DBMS_OUTPUT.PUT_LINE
+('Quantidade: ' || V_QUANTIDADE);
+END LOOP;
+END;
